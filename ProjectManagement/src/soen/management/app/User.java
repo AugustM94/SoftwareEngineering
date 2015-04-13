@@ -1,7 +1,11 @@
 package soen.management.app;
 
 public class User {
-	private String name = "test";
+	private static int UserID;
+	private String name;
+	private Activity activties[];
+	private int Hours[][];
+	
 	
 	public User(String name){
 		this.name = name;
