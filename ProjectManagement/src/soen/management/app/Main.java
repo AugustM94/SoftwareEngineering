@@ -9,16 +9,7 @@ public class Main {
 		user = new User();
 		System.out.println(user.getName());
 		
-		// pik er hoar 2
 
-		//HELLLOOOOOO
 	}
 	
-	public String dfs(String s){
-		return s;
-	}
-	
-	public static int hej(){
-		return 1;
-	}
 }
