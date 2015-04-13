@@ -8,5 +8,6 @@ public class ManagementApp {
 	public static void main(String[] args) {
 		user = new User();
 		System.out.println(user.getName());
+		//test
 	}
 }
