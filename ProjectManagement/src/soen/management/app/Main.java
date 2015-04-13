@@ -9,10 +9,8 @@ public class Main {
 		user = new User();
 		System.out.println(user.getName());
 		
-<<<<<<< Updated upstream
 		// pik er hoar
-=======
->>>>>>> Stashed changes
+
 		//HELLLOOOOOO
 	}
 	
