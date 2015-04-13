@@ -10,7 +10,7 @@ public class ManagementApp {
 
 		user = new User("Niki");
 		user2 = new User("Martin");
-		System.out.println(user2.getUserID());
+		System.out.println(user.getUserID());
 		//test
 
 
