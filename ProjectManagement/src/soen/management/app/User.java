@@ -6,12 +6,12 @@ public class User {
 	private int userID;
 	private static int nextID = 1;
 	private String name;
-	private int projectID[]; //Projects of the user
+	private ArrayList<Integer> projectID; //Projects of the user
 	
 	
-	public User(String name, int userID, int[] projectID){
+	public User(String name){
 		this.name = name;
-		ArrayList<Integer> projectID = new ArrayList<Integer>();
+		this.projectID = new ArrayList<Integer>();
 		this.userID = nextID;
 		nextID++;
 	}
@@ -25,6 +25,9 @@ public class User {
 		return name;
 	}
 
+	public ArrayList<Integer> getProjects(){
+		return projectID;
+	}
 	
 	
 //	public String printUserID(){
