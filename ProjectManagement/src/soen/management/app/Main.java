@@ -14,6 +14,10 @@ public class Main {
 		//HELLLOOOOOO
 	}
 	
+	public String dfs(String s){
+		return s;
+	}
+	
 	public static int hej(){
 		return 1;
 	}
