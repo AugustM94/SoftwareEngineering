@@ -9,7 +9,7 @@ public class User {
 	private int projectID[]; //Projects of the user
 	
 	
-	public User(String name){
+	public User(String name, int userID, int[] projectID){
 		this.name = name;
 		ArrayList<Integer> projectID = new ArrayList<Integer>();
 		this.userID = nextID;
