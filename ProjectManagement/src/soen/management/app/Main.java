@@ -9,7 +9,15 @@ public class Main {
 		user = new User();
 		System.out.println(user.getName());
 		
+<<<<<<< HEAD
 		// pik er hoar
+=======
+		
+>>>>>>> origin/master
 		//HELLLOOOOOO
+	}
+	
+	public static int hej(){
+		return 1;
 	}
 }
