@@ -9,6 +9,7 @@ public class Main {
 		user = new User();
 		System.out.println(user.getName());
 		
+		// pik er hoar
 		//HELLLOOOOOO
 	}
 }
