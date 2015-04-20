@@ -22,4 +22,10 @@ public class Project {
 	public void activateProject(int projectID){
 		
 	}
+	
+	public String printProjectSummary(int projectID){
+		
+		
+		return "hej";
+	}
 }
