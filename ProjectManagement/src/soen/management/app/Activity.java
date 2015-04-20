@@ -65,19 +65,19 @@ public class Activity {
 	}
 
 	public int[] getAssignedUsers() {
-		return AssignedUsers;
+		return assignedUsers;
 	}
 
 	public void setAssignedUsers(int[] assignedUsers) {
-		AssignedUsers = assignedUsers;
+		assignedUsers = assignedUsers;
 	}
 
 	public int[][] getHoursSpendPerUser() {
-		return HoursSpendPerUser;
+		return hoursSpendPerUser;
 	}
 
 	public void setHoursSpendPerUser(int[][] hoursSpendPerUser) {
-		HoursSpendPerUser = hoursSpendPerUser;
+		hoursSpendPerUser = hoursSpendPerUser;
 	}
 
 	public int getTimeStamp() {
