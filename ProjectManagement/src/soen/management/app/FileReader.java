@@ -1,47 +1,30 @@
 package soen.management.app;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
  
 
 public class FileReader {
-
-/*
-	Scanner input;
-	
-	input = new Scanner(new File(""));
-	while (input.hasNext()){
-		String something = (String)input.nextLine();
-		System.out.println(something);
-	}
-	*/
-    public static void main(String[] args) {
-    	
-    }
-    
     public String getFileData(){
     	String line;
         StringBuilder everything = new StringBuilder();
         
-        File file = new File("src/hej.json");
+        File file = new File("src/projects.json");
 
         BufferedReader br = null;
-
-        
         
         try {
             java.io.FileReader fr = new java.io.FileReader(file);
             br = new BufferedReader(fr);
-
-            
-            
+    
             while( (line = br.readLine()) != null) {
                everything.append(line);
             }
   
-
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + file.toString());
         } catch (IOException e) {
@@ -58,5 +41,27 @@ public class FileReader {
         }
         
     	return everything.toString();
+    }
+    public void saveFileData(String content){
+		try {
+			 
+ 
+			File file = new File("src/projects.json");
+ 
+			// if file doesnt exists, then create it
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+ 
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(content);
+			bw.close();
+ 
+			System.out.println("Done");
+ 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 }
