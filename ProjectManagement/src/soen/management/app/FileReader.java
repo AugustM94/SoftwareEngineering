@@ -22,23 +22,25 @@ public class FileReader {
     }
     
     public String getFileData(){
-    	System.out.println("did shit");
-        File file = new File("src/hej.txt");
+    	String line;
+        StringBuilder everything = new StringBuilder();
+        
+        File file = new File("src/hej.json");
 
         BufferedReader br = null;
 
-        String line = "";
+        
         
         try {
             java.io.FileReader fr = new java.io.FileReader(file);
             br = new BufferedReader(fr);
 
             
-
-            while( (line = br.readLine()) != null ) {
-                System.out.println(line);
+            
+            while( (line = br.readLine()) != null) {
+               everything.append(line);
             }
-
+  
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + file.toString());
@@ -55,6 +57,6 @@ public class FileReader {
             }
         }
         
-    	return line;
+    	return everything.toString();
     }
 }

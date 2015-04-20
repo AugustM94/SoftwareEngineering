@@ -10,6 +10,7 @@ public class Activity {
 	private int assignedUsers[];
 	private int hoursSpendPerUser[][];
 	private int hoursBudgeted;
+
 	private int timeStamp;
 	private boolean active;
 	

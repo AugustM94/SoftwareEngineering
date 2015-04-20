@@ -1,5 +1,8 @@
 package soen.management.app;
 
+import org.json.JSONObject;
+
+
 public class ManagementApp {
 	public static User user;
 	public static User user2;
@@ -9,8 +12,20 @@ public class ManagementApp {
 
 		User user = new User("Nicki");
 		//System.out.println(user.getUserID());
-		fileReader.getFileData();
-		System.out.println("did this shit");
+		
+		
+		//JSONObject jsonObject = new JSONObject(fileReader.getFileData());
+		String jsonString = fileReader.getFileData();
+		//System.out.println(jsonString);
+        JSONObject jsonObject = new JSONObject(jsonString);
+        JSONObject newJSON = jsonObject.getJSONObject("projects");
+        //System.out.println(newJSON.toString());
+        jsonObject = new JSONObject(newJSON.toString());
+        System.out.println("ProjectID = "+jsonObject.getString("ProjectID"));
+        System.out.println("Project name = "+jsonObject.getString("name")); 
+        
+
+        //this is it
 	}
 	
 }
