@@ -12,14 +12,14 @@ public class Project {
 	private int timeStamp;
 	private boolean active;
 	
-	public Project(String name, int startDate, int endDate, int projectLeaderId, int projectType){
+	public Project(String name, int projectType){
 		this.name = name;
 		this.projectID = 1; //change to length of project list
-		this.startDate = startDate; //unix time of start date
-		this.endDate = endDate; // unix time of end date
-		this.projectLeaderId = projectLeaderId;
 		this.projectType = projectType;
 		this.timeStamp = (int) (System.currentTimeMillis() / 1000L);
-		this.active = true;
+	}
+	
+	public void activateProject(int projectID){
+		
 	}
 }
