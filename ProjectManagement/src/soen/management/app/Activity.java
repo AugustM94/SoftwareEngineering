@@ -7,8 +7,9 @@ public class Activity {
 	private String name;
 	private int startDate;
 	private int endDate;
-	private int AssignedUsers[];
-	private int HoursSpendPerUser[][];
+	private int assignedUsers[];
+	private int hoursSpendPerUser[][];
+	private int hoursBudgeted;
 	private int timeStamp;
 	private boolean active;
 	
