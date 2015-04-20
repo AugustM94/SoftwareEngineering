@@ -7,6 +7,7 @@ import java.io.IOException;
  
 
 public class FileReader {
+<<<<<<< Updated upstream
 /*
 	Scanner input;
 	
@@ -37,6 +38,9 @@ public class FileReader {
             while( (line = br.readLine()) != null ) {
                 System.out.println(line);
             }
+=======
+	
+>>>>>>> Stashed changes
 
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + file.toString());
