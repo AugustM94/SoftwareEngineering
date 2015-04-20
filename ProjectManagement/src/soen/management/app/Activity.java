@@ -21,15 +21,7 @@ public class Activity {
 	}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	// Getters and setters
 	public int getProjectID() {
@@ -69,7 +61,7 @@ public class Activity {
 	}
 
 	public void setAssignedUsers(int[] assignedUsers) {
-		assignedUsers = assignedUsers;
+		this.assignedUsers = assignedUsers;
 	}
 
 	public int[][] getHoursSpendPerUser() {
@@ -77,7 +69,7 @@ public class Activity {
 	}
 
 	public void setHoursSpendPerUser(int[][] hoursSpendPerUser) {
-		hoursSpendPerUser = hoursSpendPerUser;
+		this.hoursSpendPerUser = hoursSpendPerUser;
 	}
 
 	public int getTimeStamp() {
