@@ -22,11 +22,15 @@ public class Project {
 		
 	}
 	
+<<<<<<< Updated upstream
 	/*
 	public String printProjectSummary(int projectID){
 		Project resume
 		String name = 
 		
+=======
+	public String printProjectSummary(int projectID){	
+>>>>>>> Stashed changes
 		return "hej";
 	}*/
 
@@ -36,6 +40,11 @@ public class Project {
 //Get setters
 	public int getProjectID() {
 		return projectID; 
+	}
+	
+	public Project getProject(int projectID){
+		
+		return 1;
 	}
 
 
