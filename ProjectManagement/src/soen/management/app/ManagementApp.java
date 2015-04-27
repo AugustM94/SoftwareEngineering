@@ -14,32 +14,10 @@ public class ManagementApp {
 	
 	
 	public static void main(String[] args) {
-<<<<<<< Updated upstream
 
-<<<<<<< HEAD
 		//User user = new User("Nicki");
 		
 		loadProjects();
-=======
-		User user = new User("Nicki");
-		//System.out.println(user.getUserID());
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-		//User user = new User("Nicki");
-		loadProjects();
-=======
-
-		User user = new User("Nicki");
-		//System.out.println(user.getUserID());
->>>>>>> origin/master
-=======
-
-		User user = new User("Nicki");
-		//System.out.println(user.getUserID());
->>>>>>> origin/master
->>>>>>> Stashed changes
->>>>>>> bfaa732a24aca0b003c2d552b37e5fb679cdafa8
 		
 		//adds a new project
 		//Project new_project = new Project("test",1);
