@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.Test;
 
 
 public class ManagementApp {
@@ -27,7 +28,7 @@ public class ManagementApp {
 	    //saveProjects();
 
 	}
-	
+	@Test
 	public static void loadProjects() throws NumberFormatException{
 		String jsonString = fileReader.getFileData();
         JSONArray jsonArray = new JSONArray(jsonString);
