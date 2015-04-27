@@ -1,6 +1,5 @@
 package soen.management.app;
 
-import java.util.ArrayList;
 
 public class Project {
 	private int projectID;
@@ -23,12 +22,17 @@ public class Project {
 		
 	}
 	
+
+	/*
 	public String printProjectSummary(int projectID){
 		Project resume
 		String name = 
 		
+=======
+	public String printProjectSummary(int projectID){	
+>>>>>>> Stashed changes
 		return "hej";
-	}
+	}*/
 
 	
 	
@@ -37,6 +41,7 @@ public class Project {
 	public int getProjectID() {
 		return projectID; 
 	}
+
 
 
 	public String getName() {
