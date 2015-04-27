@@ -9,11 +9,11 @@ import java.io.IOException;
  
 
 public class FileReader {
-    public String getFileData(){
+    public String getFileData(String filename){
     	String line;
         StringBuilder everything = new StringBuilder();
         
-        File file = new File("src/projects.json");
+        File file = new File("src/"+filename+".json");
 
         BufferedReader br = null;
         
@@ -42,11 +42,11 @@ public class FileReader {
         
     	return everything.toString();
     }
-    public void saveFileData(String content){
+    public void saveFileData(String content, String filename){
 		try {
 			 
  
-			File file = new File("src/projects.json");
+			File file = new File("src/"+filename+".json");
  
 			// if file doesnt exists, then create it
 			if (!file.exists()) {

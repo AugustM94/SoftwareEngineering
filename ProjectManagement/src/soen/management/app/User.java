@@ -4,18 +4,15 @@ import java.util.ArrayList;
 
 public class User {
 	private int userID;
-	private static int nextID = 1;
 	private String name;
 	private ArrayList<Integer> projectID; //Projects of the user
-	
+	static ManagementApp managementApp = new ManagementApp();
 	
 	public User(String name){
 		this.name = name;
 		this.projectID = new ArrayList<Integer>();
-		this.userID = nextID;
-		nextID++;
+		this.userID = managementApp.nextUserID();
 	}
-	
 
 	public int getUserID(){
 		return userID;
@@ -27,6 +24,22 @@ public class User {
 
 	public ArrayList<Integer> getProjects(){
 		return projectID;
+	}
+
+	public ArrayList<Integer> getProjectID() {
+		return projectID;
+	}
+
+	public void setProjectID(ArrayList<Integer> projectID) {
+		this.projectID = projectID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
