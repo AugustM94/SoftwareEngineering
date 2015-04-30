@@ -1,6 +1,7 @@
 package soen.management.app;
 
 import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -21,7 +22,7 @@ public class ManagementApp {
 		//projects.add(new_project);
 		System.out.println("Amount of projects: " + projects.size());
 		System.out.println("Amount of users: " + users.size());
-		new GUI();
+		
 	    //saveProjects();
 	}
 	
@@ -133,11 +134,6 @@ public class ManagementApp {
 	
 	public int nextUserID(){
 		return users.size();
-	}
-
-	public ArrayList<User> getUserArray() {
-		// TODO Auto-generated method stub
-		return users;
 	}
 	
 }
