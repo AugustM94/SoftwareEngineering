@@ -15,6 +15,9 @@ public class ManagementApp {
 	public static void main(String[] args) {
 		loadProjects();
 		loadUsers();
+		
+		//User new_user = new User("Berit");
+		//users.add(new_user);
 	
 		//adds a new project
 		//Project new_project = new Project("test",1);
@@ -22,6 +25,8 @@ public class ManagementApp {
 		System.out.println("Amount of projects: " + projects.size());
 		System.out.println("Amount of users: " + users.size());
 		new GUI();
+		
+		//saveUsers();
 	    //saveProjects();
 	}
 	
@@ -55,11 +60,11 @@ public class ManagementApp {
         		System.out.println("not a valid array"); 
         	}
 
-        	for (int j = 0; j < JSONProjectIDs.getJSONObject(0).length(); j++){
+        	for (int j = 0; j < JSONProjectIDs.length(); j++){
         		
         		int projectIDNumber = 0;
         		try{
-        			projectIDNumber = JSONProjectIDs.getJSONObject(0).getInt(""+j);
+        			projectIDNumber = JSONProjectIDs.getInt(j);
             	}catch (NumberFormatException e){
          	       System.out.println("not a number"); 
          	   	}
@@ -129,6 +134,12 @@ public class ManagementApp {
 		JSONArray jsArray = new JSONArray(projects.toArray());
 		
 		fileReader.saveFileData(jsArray.toString(), "projects");
+	}
+	
+	public static void saveUsers() {
+		JSONArray jsArray = new JSONArray(users.toArray());
+		
+		fileReader.saveFileData(jsArray.toString(), "users");
 	}
 	
 	public int nextUserID(){
