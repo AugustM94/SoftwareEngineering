@@ -50,6 +50,15 @@ public class ManagementApp {
 			
 	}
 	
+	public void addProjectLeader(int userID, int projectID)throws userNotLoggedInException{
+		if(sessionUser != 0){
+			projects.get(projectID).setProjectLeaderId(userID);
+		}else{
+			throw new userNotLoggedInException("You are not logged in, please select a user.");
+		}
+		
+	}
+	
 	public static void loadActivities() throws NumberFormatException{
 		String jsonString = fileReader.getFileData("activities");
 		JSONArray jsonArray = new JSONArray(jsonString);

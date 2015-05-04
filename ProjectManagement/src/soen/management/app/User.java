@@ -11,7 +11,7 @@ public class User {
 	public User(String name){
 		this.name = name;
 		this.projectID = new ArrayList<Integer>();
-		this.userID = managementApp.nextUserID();
+		this.userID = managementApp.getUserArray().size()+1;
 	}
 
 	public int getUserID(){

@@ -17,7 +17,7 @@ public class testAddProject {
 	private int size;
 	private String name = "New project";
 	private static ArrayList<Project> projects;
-	private User user;
+	private User user = new User("Henrik");
 
 //Test if you the exception is thrown if no user is logged in.
 @Test(expected = userNotLoggedInException.class)
@@ -34,19 +34,19 @@ public void testAddProject() throws userNotLoggedInException{
 	//a) Find amount of projects for reference.
 	//b) Login the user.
 	size = projects.size();
-	managementApp.logInUser(user.getUserID());
 	
 
 	//Checks if nothing is yet added to the list of projects. 
 	assertFalse(projects.size() == size+1);
 	
-	//a) Select user.
+	//a) Login user.
 	//b) Create a project 
-	//c) Attempt to save project. Should pass as user i logged in. 
+	//c) Save the project. Should pass as user is now logged in. 
 	
-
+	managementApp.logInUser(user.getUserID());
 	Project project = new Project(name,0);
 	managementApp.saveProject(project);
+	
 	
 	//a) Check if the length of the list is size + 1
 	//b) Checks if a name has been added to the project.
