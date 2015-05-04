@@ -2,12 +2,14 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.sql.Savepoint;
 import java.util.ArrayList;
 
 import org.junit.Test;
 
 import soen.management.app.ManagementApp;
 import soen.management.app.Project;
+import soen.management.app.userNotLoggedInException;
 
 public class testAddProject {
 	private ManagementApp managementApp;
@@ -17,7 +19,7 @@ public class testAddProject {
 	
 	
 @Test
-public void testAddProject(){
+public void testAddProject() throws userNotLoggedInException{
 	managementApp = new ManagementApp();
 	projects = managementApp.getProjectArray();
 	//Find amount of projects for reference.
@@ -25,14 +27,16 @@ public void testAddProject(){
 	//Create a name for the project
 	name = "New project";
 	
+	
+	
 	//Checks if nothing is yet added to the list of projects. 
 	assertFalse(projects.size() == size+1);
 	
 	//a) Create a project 
-	//b) Add it to the list of projects
+	//b) Attempt to save project with no user logged in(Should fail)
 	
 	Project project = new Project(name,0);
-	projects.add(project);
+	managementApp.saveProject(project);
 	
 	//a) Check if the length of the list is size + 1
 	//b) Checks if a name has been added to the project.

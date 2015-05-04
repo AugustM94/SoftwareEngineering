@@ -96,6 +96,7 @@ class CustomMouseListener implements MouseListener{
 	}
     public void mouseClicked(MouseEvent e) {
     	managementApp.logInUser(user.getUserID());
+    	System.out.println(managementApp.getSessionUser());
     }
 
     public void mousePressed(MouseEvent e) {

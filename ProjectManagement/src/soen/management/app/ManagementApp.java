@@ -38,7 +38,7 @@ public class ManagementApp {
 	}
 	
 	public void logInUser(int userID){
-		sessionUser = userID;
+		this.sessionUser = userID;
 	}
 	
 	public void saveProject(Project project)throws userNotLoggedInException{

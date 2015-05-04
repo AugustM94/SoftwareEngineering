@@ -22,15 +22,8 @@ public class Project {
 		
 	}
 	
-	/*
-	public String printProjectSummary(int projectID){
-		Project resume
-		String name = 
-		
-		return "hej";
-	}*/
 
-	
+
 	
 	
 //Get setters
