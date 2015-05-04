@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import soen.management.app.ManagementApp;
 import soen.management.app.Project;
+import soen.management.app.User;
 
 public class testAddProject {
 	private ManagementApp managementApp;
@@ -38,18 +39,6 @@ public void testAddProject(){
 	//b) Checks if a name has been added to the project.
 	assertTrue(projects.size() == size+1);
 	assertTrue(project.getName() != null);
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
-	
 	
 }

@@ -11,11 +11,8 @@ public class ManagementApp {
 	static ArrayList<User> users = new ArrayList<User>();
 	static ArrayList<Activity> activities = new ArrayList<Activity>();
 	static FileReader fileReader = new FileReader();
-<<<<<<< HEAD
 	static int sessionUser = 0;
-=======
 	public static int currentUserLoggedIn; 
->>>>>>> origin/master
 	
 	public static void main(String[] args) {
 		loadProjects();
@@ -32,11 +29,8 @@ public class ManagementApp {
 		//projects.add(new_project);
 		System.out.println("Amount of projects: " + projects.size());
 		System.out.println("Amount of users: " + users.size());
-<<<<<<< HEAD
 		System.out.println(printProjectSummary(0));
-=======
 		System.out.println("Amount of activities: "+ activities.size());
->>>>>>> origin/master
 		new GUI();
 		
 		//saveUsers();
