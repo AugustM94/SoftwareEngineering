@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.sql.Savepoint;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -9,36 +10,59 @@ import org.junit.Test;
 import soen.management.app.ManagementApp;
 import soen.management.app.Project;
 import soen.management.app.User;
+<<<<<<< HEAD
+=======
+import soen.management.app.userNotLoggedInException;
+>>>>>>> origin/master
 
 public class testAddProject {
-	private ManagementApp managementApp;
+	private ManagementApp managementApp = new ManagementApp();
 	private int size;
-	private String name;
-	static ArrayList<Project> projects;
+	private String name = "New project";
+	private static ArrayList<Project> projects;
+	private User user;
+
+//Test if you the exception is thrown if no user is logged in.
+@Test(expected = userNotLoggedInException.class)
+public void testUserNotLoggedInException() throws userNotLoggedInException{
+	Project project = new Project(name,0);
+	managementApp.saveProject(project);
+}
+	
 	
 	
 @Test
-public void testAddProject(){
-	managementApp = new ManagementApp();
+public void testAddProject() throws userNotLoggedInException{
 	projects = managementApp.getProjectArray();
-	//Find amount of projects for reference.
+	//a) Find amount of projects for reference.
+	//b) Login the user.
 	size = projects.size();
-	//Create a name for the project
-	name = "New project";
+	managementApp.logInUser(user.getUserID());
 	
+
 	//Checks if nothing is yet added to the list of projects. 
 	assertFalse(projects.size() == size+1);
 	
-	//a) Create a project 
-	//b) Add it to the list of projects
+	//a) Select user.
+	//b) Create a project 
+	//c) Attempt to save project. Should pass as user i logged in. 
 	
+
 	Project project = new Project(name,0);
-	projects.add(project);
+	managementApp.saveProject(project);
 	
 	//a) Check if the length of the list is size + 1
 	//b) Checks if a name has been added to the project.
+	System.out.println(size);
 	assertTrue(projects.size() == size+1);
 	assertTrue(project.getName() != null);
+<<<<<<< HEAD
+=======
+		
+	
+	
+	
+>>>>>>> origin/master
 }
 	
 }
