@@ -1,5 +1,7 @@
 package soen.management.app;
 
+import java.util.ArrayList;
+
 public class Activity {
 
 	private int activityID; 
@@ -7,8 +9,8 @@ public class Activity {
 	private String name;
 	private int startDate;
 	private int endDate;
-	private int assignedUsers[];
-	private int hoursSpendPerUser[][];
+	private ArrayList<Integer> assignedUsers;
+	private ArrayList<Integer> hoursSpendPerUser;
 	private int hoursBudgeted;
 
 	private int timeStamp;
@@ -57,20 +59,20 @@ public class Activity {
 		this.endDate = endDate;
 	}
 
-	public int[] getAssignedUsers() {
+	public ArrayList<Integer> getAssignedUsers() {
 		return assignedUsers;
 	}
 
-	public void setAssignedUsers(int[] assignedUsers) {
-		this.assignedUsers = assignedUsers;
+	public void setAssignedUsers(ArrayList<Integer> assignedUsers2) {
+		this.assignedUsers = assignedUsers2;
 	}
 
-	public int[][] getHoursSpendPerUser() {
+	public ArrayList<Integer> getHoursSpendPerUser() {
 		return hoursSpendPerUser;
 	}
 
-	public void setHoursSpendPerUser(int[][] hoursSpendPerUser) {
-		this.hoursSpendPerUser = hoursSpendPerUser;
+	public void setHoursSpendPerUser(ArrayList<Integer> hoursSpendPerUser2) {
+		this.hoursSpendPerUser = hoursSpendPerUser2;
 	}
 
 	public int getTimeStamp() {
@@ -89,14 +91,25 @@ public class Activity {
 		this.active = active;
 	}
 
+	public int getActivityID() {
+		return activityID;
+	}
+	
+	public void setActivityID(int activityID) {
+		this.activityID = activityID;
+	}
 
 	public int getHoursBudgeted() {
 		return hoursBudgeted;
 	}
-
-
+	
 	public void setHoursBudgeted(int hoursBudgeted) {
 		this.hoursBudgeted = hoursBudgeted;
 	}
-		
+	
+	
+	
+	
+	
+	
 }

@@ -1,0 +1,12 @@
+[{
+"activityID":0,
+"projectID":0,
+"name":"Dorit",
+"startDate":0,
+"endDate":0,
+"assignedUsers":[0,1],
+"hoursSpendPerUser":[1010232,1231201],
+"timeStamp":0,
+"active":true,
+"hoursBudgeted":100
+}]
