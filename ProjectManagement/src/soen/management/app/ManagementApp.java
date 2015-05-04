@@ -11,7 +11,11 @@ public class ManagementApp {
 	static ArrayList<User> users = new ArrayList<User>();
 	static ArrayList<Activity> activities = new ArrayList<Activity>();
 	static FileReader fileReader = new FileReader();
+<<<<<<< HEAD
 	static int sessionUser = 0;
+=======
+	public static int currentUserLoggedIn; 
+>>>>>>> origin/master
 	
 	public static void main(String[] args) {
 		loadProjects();
@@ -28,11 +32,20 @@ public class ManagementApp {
 		//projects.add(new_project);
 		System.out.println("Amount of projects: " + projects.size());
 		System.out.println("Amount of users: " + users.size());
+<<<<<<< HEAD
+		System.out.println(printProjectSummary(0));
+=======
 		System.out.println("Amount of activities: "+ activities.size());
+>>>>>>> origin/master
 		new GUI();
 		
 		//saveUsers();
 	    //saveProjects();
+		
+	}
+	
+	public void logInUser(int userID){
+		currentUserLoggedIn = userID;
 	}
 	
 	public static void loadActivities() throws NumberFormatException{
@@ -239,6 +252,33 @@ public class ManagementApp {
 		fileReader.saveFileData(jsArray.toString(), "users");
 	}
 	
+	public static String printProjectSummary(int ID){
+		Project p = projects.get(ID);
+		String type;
+		
+		if(p.getProjectType() == 0){
+			type = "In house";
+		}else{
+			type = "Out of house";
+		}
+		
+		String s = "Project summary:"+"\n"+
+		"Name: "+p.getName()+"\n"+
+		"Project leader: " + users.get(p.getProjectLeaderId()).getName() + "\n" +
+		"Project type: "+type+"\n"+
+		"Start date: " + p.getStartDate()+"\n"+
+		"End date: " + p.getEndDate() + "\n"+
+		"Spent/budgeted hours: " +"Noget her!!"+"\n"+
+		""
+		;
+					
+		
+		
+		return s;
+	}
+	
+
+	
 	public int nextUserID(){
 		return users.size();
 	}
@@ -255,5 +295,11 @@ public class ManagementApp {
 	public void setSessionUser(int sessionUser) {
 		this.sessionUser = sessionUser;
 	}
+	
+	public ArrayList<Project> getProjectArray() {
+		// TODO Auto-generated method stub
+		return projects;
+	}
+	
 	
 }
