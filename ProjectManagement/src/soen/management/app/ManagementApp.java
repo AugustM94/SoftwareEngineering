@@ -11,6 +11,7 @@ public class ManagementApp {
 	public static User user;
 	public static User user2;
 	static FileReader fileReader = new FileReader();
+	public static int currentUserLoggedIn; 
 	
 	public static void main(String[] args) {
 		loadProjects();
@@ -24,10 +25,16 @@ public class ManagementApp {
 		//projects.add(new_project);
 		System.out.println("Amount of projects: " + projects.size());
 		System.out.println("Amount of users: " + users.size());
+		System.out.println(printProjectSummary(0));
 		new GUI();
 		
 		//saveUsers();
 	    //saveProjects();
+		
+	}
+	
+	public void logInUser(int userID){
+		currentUserLoggedIn = userID;
 	}
 	
 	public static void loadUsers() throws NumberFormatException{
@@ -142,6 +149,33 @@ public class ManagementApp {
 		fileReader.saveFileData(jsArray.toString(), "users");
 	}
 	
+	public static String printProjectSummary(int ID){
+		Project p = projects.get(ID);
+		String type;
+		
+		if(p.getProjectType() == 0){
+			type = "In house";
+		}else{
+			type = "Out of house";
+		}
+		
+		String s = "Project summary:"+"\n"+
+		"Name: "+p.getName()+"\n"+
+		"Project leader: " + users.get(p.getProjectLeaderId()).getName() + "\n" +
+		"Project type: "+type+"\n"+
+		"Start date: " + p.getStartDate()+"\n"+
+		"End date: " + p.getEndDate() + "\n"+
+		"Spent/budgeted hours: " +"Noget her!!"+"\n"+
+		""
+		;
+					
+		
+		
+		return s;
+	}
+	
+
+	
 	public int nextUserID(){
 		return users.size();
 	}
@@ -150,5 +184,11 @@ public class ManagementApp {
 		// TODO Auto-generated method stub
 		return users;
 	}
+	
+	public ArrayList<Project> getProjectArray() {
+		// TODO Auto-generated method stub
+		return projects;
+	}
+	
 	
 }
