@@ -11,6 +11,7 @@ public class ManagementApp {
 	static ArrayList<User> users = new ArrayList<User>();
 	static ArrayList<Activity> activities = new ArrayList<Activity>();
 	static FileReader fileReader = new FileReader();
+	private boolean userLoggedIn = false;
 	static int sessionUser = 0;
 	
 	public static void main(String[] args) {
@@ -38,11 +39,12 @@ public class ManagementApp {
 	}
 	
 	public void logInUser(int userID){
+		userLoggedIn = true;
 		this.sessionUser = userID;
 	}
 	
 	public void saveProject(Project project)throws userNotLoggedInException{
-		if(sessionUser != 0){
+		if(userLoggedIn==true){
 			projects.add(project);
 		}else{
 			throw new userNotLoggedInException("You are not logged in, please select a user.");
@@ -51,7 +53,7 @@ public class ManagementApp {
 	}
 	
 	public void addProjectLeader(int userID, int projectID)throws userNotLoggedInException{
-		if(sessionUser != 0){
+		if(userLoggedIn == true){
 			projects.get(projectID).setProjectLeaderId(userID);
 		}else{
 			throw new userNotLoggedInException("You are not logged in, please select a user.");
