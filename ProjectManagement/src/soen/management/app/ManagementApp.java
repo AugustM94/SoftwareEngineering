@@ -11,6 +11,7 @@ public class ManagementApp {
 	static ArrayList<User> users = new ArrayList<User>();
 	static ArrayList<Activity> activities = new ArrayList<Activity>();
 	static FileReader fileReader = new FileReader();
+	static int sessionUser = 0;
 	
 	public static void main(String[] args) {
 		loadProjects();
@@ -245,6 +246,14 @@ public class ManagementApp {
 	public ArrayList<User> getUserArray() {
 		// TODO Auto-generated method stub
 		return users;
+	}
+
+	public int getSessionUser() {
+		return sessionUser;
+	}
+
+	public void setSessionUser(int sessionUser) {
+		this.sessionUser = sessionUser;
 	}
 	
 }

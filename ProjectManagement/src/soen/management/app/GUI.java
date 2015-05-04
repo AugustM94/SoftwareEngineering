@@ -88,13 +88,19 @@ public class GUI extends JFrame{
 }
 
 class CustomMouseListener implements MouseListener{
+	private ManagementApp managementApp = new ManagementApp();
 	User user;
 	
 	CustomMouseListener(User user){
 		this.user = user;
 	}
     public void mouseClicked(MouseEvent e) {
-    	System.out.println(user.getProjectID());
+    	if (managementApp.getSessionUser() == 0){
+    		managementApp.setSessionUser(user.getUserID());
+    	}
+    	else{
+    		System.out.println("session user already set");
+    	}
     }
 
     public void mousePressed(MouseEvent e) {
