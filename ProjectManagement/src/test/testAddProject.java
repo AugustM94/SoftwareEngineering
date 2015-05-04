@@ -10,6 +10,7 @@ import org.junit.Test;
 import soen.management.app.ManagementApp;
 import soen.management.app.Project;
 import soen.management.app.User;
+
 import soen.management.app.userNotLoggedInException;
 
 public class testAddProject {
@@ -53,11 +54,6 @@ public void testAddProject() throws userNotLoggedInException{
 	System.out.println(size);
 	assertTrue(projects.size() == size+1);
 	assertTrue(project.getName() != null);
-		
-	
-	
-	
 }
-	
 	
 }
