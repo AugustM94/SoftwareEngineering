@@ -13,6 +13,7 @@ public class ManagementApp {
 	static FileReader fileReader = new FileReader();
 	private boolean userLoggedIn = false;
 	static int sessionUser = 0;
+	static Project currentProject = null;
 	
 	public static void main(String[] args) {
 		loadProjects();
@@ -283,14 +284,9 @@ public class ManagementApp {
 		"End date: " + p.getEndDate() + "\n"+
 		"Spent/budgeted hours: " +"Noget her!!"+"\n"+
 		""
-		;
-					
-		
-		
+		;	
 		return s;
 	}
-	
-
 	
 	public int nextUserID(){
 		return users.size();
@@ -299,6 +295,11 @@ public class ManagementApp {
 	public ArrayList<User> getUserArray() {
 		// TODO Auto-generated method stub
 		return users;
+	}
+	
+	public ArrayList<Activity> getActivityArray() {
+		// TODO Auto-generated method stub
+		return activities;
 	}
 
 	public int getSessionUser() {
