@@ -12,10 +12,6 @@ public class ManagementApp {
 	static ArrayList<Activity> activities = new ArrayList<Activity>();
 	static FileReader fileReader = new FileReader();
 	static int sessionUser = 0;
-<<<<<<< HEAD
-	public static int currentUserLoggedIn; 
-=======
->>>>>>> origin/master
 	
 	public static void main(String[] args) {
 		loadProjects();
