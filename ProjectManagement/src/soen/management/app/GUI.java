@@ -95,12 +95,7 @@ class CustomMouseListener implements MouseListener{
 		this.user = user;
 	}
     public void mouseClicked(MouseEvent e) {
-    	if (managementApp.getSessionUser() == 0){
-    		managementApp.setSessionUser(user.getUserID());
-    	}
-    	else{
-    		System.out.println("session user already set");
-    	}
+    	managementApp.logInUser(user.getUserID());
     }
 
     public void mousePressed(MouseEvent e) {
