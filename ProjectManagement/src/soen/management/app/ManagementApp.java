@@ -38,7 +38,7 @@ public class ManagementApp {
 	}
 	
 	public void logInUser(int userID){
-		sessionUser = userID;
+		this.sessionUser = userID;
 	}
 	
 	public void saveProject(Project project)throws userNotLoggedInException{
@@ -48,6 +48,15 @@ public class ManagementApp {
 			throw new userNotLoggedInException("You are not logged in, please select a user.");
 		}
 			
+	}
+	
+	public void addProjectLeader(int userID, int projectID)throws userNotLoggedInException{
+		if(sessionUser != 0){
+			projects.get(projectID).setProjectLeaderId(userID);
+		}else{
+			throw new userNotLoggedInException("You are not logged in, please select a user.");
+		}
+		
 	}
 	
 	public static void loadActivities() throws NumberFormatException{
