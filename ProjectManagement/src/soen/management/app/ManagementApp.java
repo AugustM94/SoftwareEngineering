@@ -28,7 +28,7 @@ public class ManagementApp {
 	    //saveProjects();
 
 	}
-	@Test
+	
 	public static void loadProjects() throws NumberFormatException{
 		String jsonString = fileReader.getFileData();
         JSONArray jsonArray = new JSONArray(jsonString);

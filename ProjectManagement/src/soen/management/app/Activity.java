@@ -88,10 +88,15 @@ public class Activity {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
-	
-	
-	
-	
-	
+
+
+	public int getHoursBudgeted() {
+		return hoursBudgeted;
+	}
+
+
+	public void setHoursBudgeted(int hoursBudgeted) {
+		this.hoursBudgeted = hoursBudgeted;
+	}
+		
 }
