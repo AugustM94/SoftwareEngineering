@@ -12,6 +12,7 @@ public class ManagementApp {
 	static ArrayList<Activity> activities = new ArrayList<Activity>();
 	static FileReader fileReader = new FileReader();
 	static int sessionUser = 0;
+	static Project currentProject = null;
 	
 	public static void main(String[] args) {
 		loadProjects();
@@ -292,6 +293,11 @@ public class ManagementApp {
 	public ArrayList<User> getUserArray() {
 		// TODO Auto-generated method stub
 		return users;
+	}
+	
+	public ArrayList<Activity> getActivityArray() {
+		// TODO Auto-generated method stub
+		return activities;
 	}
 
 	public int getSessionUser() {
