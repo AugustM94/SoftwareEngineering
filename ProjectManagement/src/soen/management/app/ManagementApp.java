@@ -12,7 +12,6 @@ public class ManagementApp {
 	static ArrayList<Activity> activities = new ArrayList<Activity>();
 	static FileReader fileReader = new FileReader();
 	static int sessionUser = 0;
-	public static int currentUserLoggedIn; 
 	
 	public static void main(String[] args) {
 		loadProjects();
@@ -39,7 +38,16 @@ public class ManagementApp {
 	}
 	
 	public void logInUser(int userID){
-		currentUserLoggedIn = userID;
+		sessionUser = userID;
+	}
+	
+	public void saveProject(Project project)throws userNotLoggedInException{
+		if(sessionUser != 0){
+			projects.add(project);
+		}else{
+			throw new userNotLoggedInException("You are not logged in, please select a user.");
+		}
+			
 	}
 	
 	public static void loadActivities() throws NumberFormatException{
