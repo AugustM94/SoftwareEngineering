@@ -21,11 +21,7 @@ public class Project {
 	public void activateProject(int projectID){
 		
 	}
-	
 
-
-	
-	
 //Get setters
 	public int getProjectID() {
 		return projectID; 

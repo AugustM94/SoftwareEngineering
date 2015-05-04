@@ -281,14 +281,9 @@ public class ManagementApp {
 		"End date: " + p.getEndDate() + "\n"+
 		"Spent/budgeted hours: " +"Noget her!!"+"\n"+
 		""
-		;
-					
-		
-		
+		;	
 		return s;
 	}
-	
-
 	
 	public int nextUserID(){
 		return users.size();

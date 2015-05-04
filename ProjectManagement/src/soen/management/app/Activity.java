@@ -22,9 +22,6 @@ public class Activity {
 		this.projectID = 1;
 		this.timeStamp = (int) (System.currentTimeMillis() / 1000L);
 	}
-
-	
-
 	
 	// Getters and setters
 	public int getProjectID() {
@@ -63,8 +60,8 @@ public class Activity {
 		return assignedUsers;
 	}
 
-	public void setAssignedUsers(ArrayList<Integer> assignedUsers2) {
-		this.assignedUsers = assignedUsers2;
+	public void setAssignedUsers(ArrayList<Integer> assignedUsers) {
+		this.assignedUsers = assignedUsers;
 	}
 
 	public ArrayList<Integer> getHoursSpendPerUser() {
