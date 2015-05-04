@@ -1,23 +1,26 @@
 package soen.management.app;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
 public class GUI extends JFrame{
 	private static final long serialVersionUID = 1L;
 	
 	private ManagementApp managementApp = new ManagementApp();
-	JPanel leftPanel = new JPanel();
-	JPanel middlePanel = new JPanel();
-	JPanel rightPanel = new JPanel();
-
+	JPanel panelCont = new JPanel();
+	JPanel panelCont2 = new JPanel();
+	
+	
 	GUI(){
 	    super("Project Management"); 
 	    
@@ -25,77 +28,127 @@ public class GUI extends JFrame{
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setLayout(null);
 	    Container con = this.getContentPane(); 
+	    setpanelCont();
+	    setpanelCont2();
 	    
-	    setLeftPanel();
-	    setMiddlePanel();
-	    setRightPanel();
+	    con.add(panelCont);
+	    con.add(panelCont2);
 	    
-	    con.add(leftPanel); 
-	    con.add(middlePanel);
-	    con.add(rightPanel);
-	    
-	    
-	
 	    setVisible(true); // make frame visible
 	}
 	
-	public void setLeftPanel(){
+	public void setpanelCont(){
+		
+		panelCont.setBackground(new Color(0xb2b2b2));
+		panelCont.setSize(600, 400);
+		panelCont.setLocation(0, 0);
+		panelCont.setLayout(null);
+		panelCont.setVisible(true);
+		
 		JLabel userHeader = new JLabel("Select a user");
+		
+		userHeader.setSize(200,50);
+		userHeader.setLocation(0,0);
+		userHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		userHeader.setOpaque(true);
 		
 		ArrayList<User> users = managementApp.getUserArray();
 		JLabel[] userLabels = new JLabel[users.size()];
 		
-		leftPanel.setBackground(new Color(0xb2b2b2));
-		leftPanel.setSize(200, 400);
-		leftPanel.setLocation(0, 0);
-		leftPanel.setLayout(null);
-		
-		userHeader.setSize(200,50);
-		userHeader.setLocation(0, 0);
-		userHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		userHeader.setOpaque(true);
-		
 		for (int i = 0; i < users.size(); i++){
 			userLabels[i] = new JLabel(users.get(i).getName());
 			userLabels[i].setSize(190,50);
-			userLabels[i].setLocation(5, (i+1)*55);
+			userLabels[i].setLocation(5, (i+2)*55);
 			userLabels[i].setBackground(new Color(0xEFEFEF));
 			userLabels[i].setHorizontalAlignment(SwingConstants.CENTER);
 			userLabels[i].setOpaque(true);
-			userLabels[i].addMouseListener(new CustomMouseListener(users.get(i)));
-			
-			leftPanel.add(userLabels[i]);
+			userLabels[i].addMouseListener(new CustomMouseListener(panelCont2, panelCont, users.get(i)));
+			panelCont.add(userLabels[i]);
 		}
 		
-	    leftPanel.add(userHeader); 
+	    panelCont.add(userHeader);
+
 	}
 	
-	public void setMiddlePanel(){
-		middlePanel.setBackground(new Color(0xEFEFEF));
-		middlePanel.setSize(200, 400);
-		middlePanel.setLocation(200, 0);
-		middlePanel.setLayout(null);
-		
-	}
 	
-	public void setRightPanel(){
-		rightPanel.setBackground(new Color(0xEFEFEF));
-		rightPanel.setSize(200, 400);
-		rightPanel.setLocation(400, 0);
-		rightPanel.setLayout(null);
+	public void setpanelCont2(){
 		
+		panelCont2.setBackground(new Color(0xb2b2b2));
+		panelCont2.setSize(600, 400);
+		panelCont2.setLocation(0, 0);
+		panelCont2.setLayout(null);
+		panelCont2.setVisible(false);
+		
+		JLabel backButton = new JLabel("Back");
+		
+		backButton.setSize(100,25);
+		backButton.setBackground(new Color(0xffffff));
+		backButton.setLocation(0, 0);
+		backButton.setHorizontalAlignment(SwingConstants.CENTER);
+		backButton.setOpaque(true);
+		backButton.addMouseListener(new CustomMouseListener(panelCont, panelCont2));
+		
+		panelCont2.add(backButton);
+		
+		JLabel projectHeader = new JLabel("Select a project");
+		
+		projectHeader.setSize(500,25);
+		projectHeader.setLocation(100,0);
+		projectHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		projectHeader.setOpaque(true);
+		
+		ArrayList<Project> projects = managementApp.getProjectArray();
+		JLabel[] projectLabels = new JLabel[projects.size()];
+		
+		for (int i = 0; i < projects.size(); i++){
+			projectLabels[i] = new JLabel(projects.get(i).getName());
+			projectLabels[i].setSize(100,30);
+			projectLabels[i].setLocation(5, (i+1)*35);
+			projectLabels[i].setBackground(new Color(0xEFEFEF));
+			projectLabels[i].setHorizontalAlignment(SwingConstants.CENTER);
+			projectLabels[i].setOpaque(true);
+			projectLabels[i].addMouseListener(new CustomMouseListener(projects.get(i)));
+			
+			panelCont2.add(projectLabels[i]);
+		}
+		
+	    panelCont2.add(projectHeader);
 	}
 }
 
 class CustomMouseListener implements MouseListener{
 	private ManagementApp managementApp = new ManagementApp();
 	User user;
+	Project project;
+	JPanel viewShow;
+	JPanel viewHide;
+	static JPanel lastView;
 	
-	CustomMouseListener(User user){
+	CustomMouseListener(){
+		
+	}
+	CustomMouseListener(JPanel viewShow, JPanel viewHide){
+		this.viewShow=viewShow;
+		this.viewHide=viewHide;
+		
+	}
+	
+	CustomMouseListener(JPanel viewShow, JPanel viewHide, User user){
 		this.user = user;
+		this.viewShow=viewShow;
+		this.viewHide=viewHide;
+	}
+	CustomMouseListener(Project project){
+		this.project = project;
 	}
     public void mouseClicked(MouseEvent e) {
-    	managementApp.logInUser(user.getUserID());
+    	if (user != null){
+    		managementApp.setSessionUser(user.getUserID());
+    	}
+       		viewShow.setVisible(true);
+    		viewHide.setVisible(false);
+    	
+    	
     }
 
     public void mousePressed(MouseEvent e) {
@@ -109,4 +162,4 @@ class CustomMouseListener implements MouseListener{
 
     public void mouseExited(MouseEvent e) {
     }
- }
+}
