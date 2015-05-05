@@ -142,7 +142,7 @@ class CustomMouseListener implements MouseListener{
 		this.project = project;
 	}
     public void mouseClicked(MouseEvent e) {
-<<<<<<< HEAD
+
     	if (user != null){
     		managementApp.setSessionUser(user.getUserID());
     	}
@@ -150,10 +150,9 @@ class CustomMouseListener implements MouseListener{
     		viewHide.setVisible(false);
     	
     	
-=======
+
     	managementApp.logInUser(user.getUserID());
     	System.out.println(managementApp.getSessionUser());
->>>>>>> origin/master
     }
 
     public void mousePressed(MouseEvent e) {
