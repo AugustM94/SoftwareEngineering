@@ -10,10 +10,11 @@ public class Project {
 	private int projectType;
 	private int timeStamp;
 	private boolean active;
+	static ManagementApp managementApp = new ManagementApp();
 	
 	public Project(String name, int projectType){
 		this.name = name;
-		this.projectID = 1; //change to length of project list
+		this.projectID = managementApp.getProjectArray().size(); //change to length of project list
 		this.projectType = projectType;
 		this.timeStamp = (int) (System.currentTimeMillis() / 1000L);
 	}
@@ -21,11 +22,7 @@ public class Project {
 	public void activateProject(int projectID){
 		
 	}
-	
 
-
-	
-	
 //Get setters
 	public int getProjectID() {
 		return projectID; 
