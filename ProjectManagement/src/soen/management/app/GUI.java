@@ -202,6 +202,7 @@ class CustomMouseListener implements MouseListener{
 	}
 	
     public void mouseClicked(MouseEvent e) {
+
     	if (user != null){
         	managementApp.logInUser(user.getUserID());
         	viewShow.setVisible(true);
@@ -211,12 +212,20 @@ class CustomMouseListener implements MouseListener{
     		System.out.println(project.getName());
     		viewShow.setVisible(true);
     		viewHide.setVisible(false);
+
+    	
+    	
+
+    	managementApp.logInUser(user.getUserID());
+    	System.out.println(managementApp.getSessionUser());
+
     	}
     	else{
     		viewShow.setVisible(true);
     		viewHide.setVisible(false);
     	}
     	//System.out.println(managementApp.getSessionUser());
+
 
     }
 
