@@ -82,6 +82,16 @@ public class ManagementApp {
 		activities.get(activityID).addToAssignedUsers(userID);
 	}
 
+	public static ArrayList<Integer> getProjectLeaderProjects(int userID){
+		ArrayList<Integer> projectLeaderProjects = new ArrayList<Integer>();
+		for (int i = 0; i < projects.size(); i++){
+			if(userID == projects.get(i).getProjectLeaderId()){
+				projectLeaderProjects.add(projects.get(0).getProjectID());
+			}
+		}
+		
+		return projectLeaderProjects;
+	}
 	//Return the IDs of activites which a user is assigned. 
 	public static ArrayList<Integer> getAssignedActivitiesForUser(int user)
 			throws userNotLoggedInException {
