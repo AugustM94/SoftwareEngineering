@@ -12,6 +12,15 @@ public class ManagementApp {
 	static FileReader fileReader = new FileReader();
 	private static boolean userLoggedIn = false;
 	static int sessionUser = 0;
+	static int currentProject = 0;
+
+	public static int getCurrentProject() {
+		return currentProject;
+	}
+
+	public static void setCurrentProject(int currentProject) {
+		ManagementApp.currentProject = currentProject;
+	}
 
 	public static void main(String[] args) throws userNotLoggedInException {
 		loadProjects();
@@ -305,7 +314,7 @@ public class ManagementApp {
 		fileReader.saveFileData(jsArray.toString(), "users");
 	}
 
-	public static String printProjectSummary(int ID) {
+	public String printProjectSummary(int ID) {
 		Project p = projects.get(ID);
 		String type;
 
