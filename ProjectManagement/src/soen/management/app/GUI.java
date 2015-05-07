@@ -90,6 +90,7 @@ public class GUI extends JFrame{
 		JButton backButton = new JButton("Back");
 		backButton.setSize(100,24);
 		backButton.setBackground(new Color(0x0e2f44));
+		backButton.setForeground(new Color(0xe5e5ff));
 		backButton.setLocation(15, 3);
 		backButton.setHorizontalAlignment(SwingConstants.CENTER);
 		backButton.setOpaque(true);
@@ -130,6 +131,7 @@ public class GUI extends JFrame{
 		JButton backButton = new JButton("Back");
 		backButton.setSize(100,24);
 		backButton.setBackground(new Color(0x0e2f44));
+		backButton.setForeground(new Color(0xe5e5ff));
 		backButton.setLocation(15, 3);
 		backButton.setHorizontalAlignment(SwingConstants.CENTER);
 		backButton.setOpaque(true);
@@ -158,6 +160,7 @@ public class GUI extends JFrame{
 		JButton backButton = new JButton("Back");
 		backButton.setSize(100,24);
 		backButton.setBackground(new Color(0x0e2f44));
+		backButton.setForeground(new Color(0xe5e5ff));
 		backButton.setLocation(15, 3);
 		backButton.setHorizontalAlignment(SwingConstants.CENTER);
 		backButton.setOpaque(true);
