@@ -1,8 +1,6 @@
 package test;
 
 import static org.junit.Assert.*;
-
-import java.sql.Savepoint;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -23,7 +21,7 @@ public class testAddProject {
 
 //Use case 1 tests: Adding a project	
 	
-//Test if you the exception is thrown if no user is logged in while attempting to save project.
+//Tests if the exception is thrown if no user is logged in while attempting to save project.
 @Test(expected = userNotLoggedInException.class)
 public void testUserNotLoggedInExceptionAddProject() throws userNotLoggedInException{
 	Project project = new Project(name,0);
@@ -78,12 +76,12 @@ public void testUserNotLoggedInExceptionAddProjectLeader() throws userNotLoggedI
 
 @Test
 public void testAddProjectLeaderToProject() throws userNotLoggedInException{
-	users = managementApp.getUserArray();
-	user = new User("Henrik");
-	users.add(user);
-	projectLeader = new User("Per");
-	users.add(projectLeader);
-	Project project = new Project(name,0);
+	users = managementApp.getUserArray(); //Initializes users ArrayList.
+	user = new User("Henrik"); //Initializes user named "Henrik".
+	users.add(user); // Adds user to the user array.
+	projectLeader = new User("Per"); // Initializes user named "per". He will be project leader.
+	users.add(projectLeader); //Adds "Per" to ArrayList. 
+	Project project = new Project(name,0); 
 	managementApp.logInUser(user.getUserID());
 	managementApp.saveProject(project);
 	managementApp.setSessionUser(user.getUserID());

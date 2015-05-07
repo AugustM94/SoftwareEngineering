@@ -9,19 +9,21 @@ public class Activity {
 	private String name;
 	private int startDate;
 	private int endDate;
-	private ArrayList<Integer> assignedUsers;
+	private static ArrayList<Integer> assignedUsers;
 	private ArrayList<Integer> hoursSpendPerUser;
 	private int hoursBudgeted;
-
 	private int timeStamp;
 	private boolean active;
+	static ManagementApp managementApp = new ManagementApp();
 	
 	public Activity(String name, int projectID){
 		this.name = name;
-		this.activityID = 1;
-		this.projectID = 1;
+		this.activityID = managementApp.getProjectArray().size();
+		this.projectID = projectID;
 		this.timeStamp = (int) (System.currentTimeMillis() / 1000L);
+		this.assignedUsers = new ArrayList<Integer>();
 	}
+	
 	
 	// Getters and setters
 	public int getProjectID() {
@@ -64,6 +66,10 @@ public class Activity {
 		this.assignedUsers = assignedUsers;
 	}
 
+	public void addToAssignedUsers(int userID) {
+		assignedUsers.add(userID);
+	}
+	
 	public ArrayList<Integer> getHoursSpendPerUser() {
 		return hoursSpendPerUser;
 	}
@@ -104,7 +110,9 @@ public class Activity {
 		this.hoursBudgeted = hoursBudgeted;
 	}
 	
-	
+	public void regeisterHours(int hours){
+		hoursSpendPerUser.set(managementApp.getSessionUser(), hoursSpendPerUser.get(managementApp.getSessionUser())+hours);
+	}
 	
 	
 	
