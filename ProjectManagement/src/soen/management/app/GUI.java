@@ -3,14 +3,20 @@ package soen.management.app;
 import java.awt.Color;
 
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+<<<<<<< HEAD
+import javax.swing.AbstractButton;
+import javax.swing.JCheckBox;
+=======
 <<<<<<< Updated upstream
 =======
 
 >>>>>>> Stashed changes
+>>>>>>> origin/master
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,6 +26,8 @@ import javax.swing.JTextField;
 =======
 >>>>>>> Stashed changes
 import javax.swing.SwingConstants;
+
+import org.json.JSONArray;
 
 public class GUI extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -180,107 +188,123 @@ public class GUI extends JFrame{
 			
 			Project.add(projectLabels[i]);
 			
+<<<<<<< HEAD
+		
+=======
 <<<<<<< Updated upstream
 
+>>>>>>> origin/master
 		
 		JLabel textarea = new JLabel("Add Project:");
-		textarea.setSize(100,30);
+		textarea.setFont(new Font("serif",Font.BOLD, 20));
+		textarea.setSize(200,30);
 		textarea.setLocation(180,40);
 		textarea.setBackground(new Color(0xe5e5e5));
 		textarea.setOpaque(true);
 		Project.add(textarea);
 		
-		JLabel projectName = new JLabel("Project Name:");
-		projectName.setSize(100,30);
-		projectName.setLocation(180,70);
-		projectName.setBackground(new Color(0xe5e5e5));
+		JLabel projectNameLabel = new JLabel("Project Name:");
+		projectNameLabel.setSize(100,30);
+		projectNameLabel.setLocation(180,70);
+		projectNameLabel.setBackground(new Color(0xe5e5e5));
+		projectNameLabel.setOpaque(true);
+		Project.add(projectNameLabel);
+		
+		JTextField projectName = new JTextField(20);
+		projectName.setSize(150,30);
+		projectName.setLocation(290,70);
 		projectName.setOpaque(true);
 		Project.add(projectName);
 		
-		JTextField ProjectName = new JTextField(20);
-		ProjectName.setSize(150,30);
-		ProjectName.setLocation(290,70);
-		ProjectName.setOpaque(true);
-		Project.add(ProjectName);
+		JLabel startDateLabel = new JLabel("Start Date:");
+		startDateLabel.setSize(100,30);
+		startDateLabel.setLocation(180,110);
+		startDateLabel.setBackground(new Color(0xe5e5e5));
+		startDateLabel.setOpaque(true);
+		Project.add(startDateLabel);
 		
-		JLabel startDate = new JLabel("Start Date:");
-		startDate.setSize(100,30);
-		startDate.setLocation(180,110);
-		startDate.setBackground(new Color(0xe5e5e5));
+		JTextField startDate = new JTextField(20);
+		startDate.setSize(150,30);
+		startDate.setLocation(290,110);
 		startDate.setOpaque(true);
+		startDate.setText(" ");
 		Project.add(startDate);
+		System.out.println(startDate.getText());
 		
-		JTextField StartDate = new JTextField(20);
-		StartDate.setSize(150,30);
-		StartDate.setLocation(290,110);
-		StartDate.setOpaque(true);
-		Project.add(StartDate);
+		JLabel endDateLabel = new JLabel("End Date:");
+		endDateLabel.setSize(100,30);
+		endDateLabel.setLocation(180,150);
+		endDateLabel.setBackground(new Color(0xe5e5e5));
+		endDateLabel.setOpaque(true);
+		Project.add(endDateLabel);
 		
-		JLabel endDate = new JLabel("End Date:");
-		endDate.setSize(100,30);
-		endDate.setLocation(180,150);
-		endDate.setBackground(new Color(0xe5e5e5));
+		JTextField endDate = new JTextField(20);
+		endDate.setSize(150,30);
+		endDate.setLocation(290,150);
 		endDate.setOpaque(true);
 		Project.add(endDate);
 		
-		JTextField EndDate = new JTextField(20);
-		EndDate.setSize(150,30);
-		EndDate.setLocation(290,150);
-		EndDate.setOpaque(true);
-		Project.add(EndDate);
+		JLabel projectLeaderIDLabel = new JLabel("ProjectLeaderID:");
+		projectLeaderIDLabel.setSize(100,30);
+		projectLeaderIDLabel.setLocation(180,190);
+		projectLeaderIDLabel.setBackground(new Color(0xe5e5e5));
+		projectLeaderIDLabel.setOpaque(true);
+		Project.add(projectLeaderIDLabel);
 		
-		JLabel projectLeaderID = new JLabel("ProjectLeaderID:");
-		projectLeaderID.setSize(100,30);
-		projectLeaderID.setLocation(180,190);
-		projectLeaderID.setBackground(new Color(0xe5e5e5));
+		JTextField projectLeaderID = new JTextField(20);
+		projectLeaderID.setSize(150,30);
+		projectLeaderID.setLocation(290,190);
 		projectLeaderID.setOpaque(true);
 		Project.add(projectLeaderID);
 		
-		JTextField ProjectLeaderID = new JTextField(20);
-		ProjectLeaderID.setSize(150,30);
-		ProjectLeaderID.setLocation(290,190);
-		ProjectLeaderID.setOpaque(true);
-		Project.add(ProjectLeaderID);
+		JLabel projectTypeLabel = new JLabel("Project Type:");
+		projectTypeLabel.setSize(100,30);
+		projectTypeLabel.setLocation(180,230);
+		projectTypeLabel.setBackground(new Color(0xe5e5e5));
+		projectTypeLabel.setOpaque(true);
+		Project.add(projectTypeLabel);
 		
-		JLabel projectType = new JLabel("Project Type:");
-		projectType.setSize(100,30);
-		projectType.setLocation(180,230);
-		projectType.setBackground(new Color(0xe5e5e5));
+		JTextField projectType = new JTextField(20);
+		projectType.setSize(150,30);
+		projectType.setLocation(290,230);
 		projectType.setOpaque(true);
 		Project.add(projectType);
 		
-		JTextField ProjectType = new JTextField(20);
-		ProjectType.setSize(150,30);
-		ProjectType.setLocation(290,230);
-		ProjectType.setOpaque(true);
-		Project.add(ProjectType);
+//		JLabel timeStamp = new JLabel("Timestamp:");
+//		timeStamp.setSize(100,30);
+//		timeStamp.setLocation(180,270);
+//		timeStamp.setBackground(new Color(0xe5e5e5));
+//		timeStamp.setOpaque(true);
+//		Project.add(timeStamp);
+//		
+//		JTextField TimeStamp = new JTextField(20);
+//		TimeStamp.setSize(150,30);
+//		TimeStamp.setLocation(290,270);
+//		TimeStamp.setOpaque(true);
+//		Project.add(TimeStamp);
 		
-		JLabel timeStamp = new JLabel("Timestamp:");
-		timeStamp.setSize(100,30);
-		timeStamp.setLocation(180,270);
-		timeStamp.setBackground(new Color(0xe5e5e5));
-		timeStamp.setOpaque(true);
-		Project.add(timeStamp);
-		
-		JTextField TimeStamp = new JTextField(20);
-		TimeStamp.setSize(150,30);
-		TimeStamp.setLocation(290,270);
-		TimeStamp.setOpaque(true);
-		Project.add(TimeStamp);
-		
-		JLabel active = new JLabel("Active:");
-		active.setSize(100,30);
-		active.setLocation(180,310);
-		active.setBackground(new Color(0xe5e5e5));
+		JLabel activeLabel = new JLabel("Active:");
+		activeLabel.setSize(100,30);
+		activeLabel.setLocation(180,310);
+		activeLabel.setBackground(new Color(0xe5e5e5));
+		activeLabel.setOpaque(true);
+		Project.add(activeLabel);
+
+		JCheckBox active = new JCheckBox("Hej");
+		active.setSize(150,30);
+		active.setLocation(290,310);
 		active.setOpaque(true);
 		Project.add(active);
-
-		JTextField Active = new JTextField(20);
-		Active.setSize(150,30);
-		Active.setLocation(290,310);
-		Active.setOpaque(true);
-		Project.add(Active);
 		
+		JLabel submit = new JLabel("Submit");
+		submit.setSize(100,30);
+		submit.setLocation(460,310);
+		submit.setBackground(new Color(0x0e2f44));
+		submit.setForeground(new Color(0xe5e5ff));
+		submit.setHorizontalAlignment(SwingConstants.CENTER);
+		submit.setOpaque(true);
+		submit.addMouseListener(new CustomMouseListener(projectName.getText(),startDate.getText(),endDate.getText(),projectLeaderID.getText(),projectType.getText(), active.isSelected()));
+		Project.add(submit);
 		
 		}    
 	}
@@ -369,7 +393,7 @@ public class GUI extends JFrame{
 		
 		JLabel addProjectLeader = new JLabel("Add Project leader");
 		addProjectLeader.setSize(140,35);
-		addProjectLeader.setLocation(15,200);
+		addProjectLeader.setLocation(15,240);
 		addProjectLeader.setBackground(new Color(0x0e2f44));
 		addProjectLeader.setForeground(new Color(0xe5e5ff));
 		addProjectLeader.setHorizontalAlignment(SwingConstants.CENTER);
@@ -402,7 +426,8 @@ public class GUI extends JFrame{
 			String s = managementApp.printProjectSummary(0);
 			projectOverview.setText(s);
 			Activity.add(projectOverview);
-		}    
+		} 
+		
 	}
 <<<<<<< Updated upstream
 	public void setaddActivityP(){
@@ -520,9 +545,20 @@ public class GUI extends JFrame{
 		Active.setLocation(150,270);
 		Active.setOpaque(true);
 		addActivityP.add(Active);
+		
+		JLabel Submit = new JLabel("Submit");
+		Submit.setSize(100,30);
+		Submit.setLocation(310,270);
+		Submit.setBackground(new Color(0x0e2f44));
+		Submit.setForeground(new Color(0xe5e5ff));
+		Submit.setHorizontalAlignment(SwingConstants.CENTER);
+		Submit.setOpaque(true);
+		addActivityP.add(Submit);
+		
 	}
 	public void setaddprojectLeader(){
-		
+		ArrayList<User> users = managementApp.getUserArray();
+
 		addprojectLeader.setBackground(new Color(0xe5e5e5));
 		addprojectLeader.setSize(600, 400);
 		addprojectLeader.setLocation(0, 0);
@@ -621,7 +657,28 @@ public class GUI extends JFrame{
 		backButton.addMouseListener(new CustomMouseListener(Activity, addprojectLeader));
 		addprojectLeader.add(backButton);
 		
+		JLabel addprojectLeaderHeader = new JLabel("Add Project Leader");
+		addprojectLeaderHeader.setSize(600,30);
+		addprojectLeaderHeader.setLocation(0,0);
+		addprojectLeaderHeader.setBackground(new Color(0x0e2f44));
+		addprojectLeaderHeader.setForeground(new Color(0xe5e5ff));
+		addprojectLeaderHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		addprojectLeaderHeader.setOpaque(true);
+		addprojectLeader.add(addprojectLeaderHeader);
 		
+<<<<<<< HEAD
+		JLabel[] userLabels = new JLabel[users.size()];
+		for (int i = 0; i < users.size(); i++){
+			userLabels[i] = new JLabel(users.get(i).getName());
+			userLabels[i].setSize(140,35);
+			userLabels[i].setLocation(15, (i+1)*40);
+			userLabels[i].setBackground(new Color(0x8697a1));
+			userLabels[i].setHorizontalAlignment(SwingConstants.CENTER);
+			userLabels[i].setOpaque(true);
+			//userLabels[i].addMouseListener(new CustomMouseListener(Project, chooseUser, users.get(i)));
+			addprojectLeader.add(userLabels[i]);
+		}
+=======
 =======
 		backButton.addMouseListener(new CustomMouseListener(editActivityP, ListofEmployees));
 		ListofEmployees.add(backButton);
@@ -735,6 +792,7 @@ public class GUI extends JFrame{
 		backButton.addMouseListener(new CustomMouseListener(editActivityP, workingHours));
 		workingHours.add(backButton);
 >>>>>>> Stashed changes
+>>>>>>> origin/master
 	}
 	
 	public void seteditActivityP(){
@@ -763,6 +821,49 @@ public class GUI extends JFrame{
 		editActivityHeader.setHorizontalAlignment(SwingConstants.CENTER);
 		editActivityHeader.setOpaque(true);
 		editActivityP.add(editActivityHeader);
+		
+		JLabel currentWorkingHours = new JLabel("Current Working Hours:");
+		currentWorkingHours.setSize(180,30);
+		currentWorkingHours.setLocation(30,50);
+		currentWorkingHours.setBackground(new Color(0xe5e5e5));
+		currentWorkingHours.setOpaque(true);
+		editActivityP.add(currentWorkingHours);
+		
+		JTextArea CurrentWorkingHours = new JTextArea();
+		CurrentWorkingHours.setSize(180,30);
+		CurrentWorkingHours.setLocation(70,50);
+		CurrentWorkingHours.setBackground(new Color(0xe5e5e5));
+		CurrentWorkingHours.setOpaque(true);
+		
+		JLabel hoursBudgetted = new JLabel("Hours Budgetted:");
+		hoursBudgetted.setSize(180,30);
+		hoursBudgetted.setLocation(30,90);
+		hoursBudgetted.setBackground(new Color(0xe5e5e5));
+		hoursBudgetted.setOpaque(true);
+		editActivityP.add(hoursBudgetted);
+		
+		JTextArea HoursBudgetted = new JTextArea();
+		HoursBudgetted.setSize(180,30);
+		HoursBudgetted.setLocation(70,90);
+		HoursBudgetted.setBackground(new Color(0xe5e5e5));
+		HoursBudgetted.setOpaque(true);
+		String st = managementApp.printProjectSummary(0);
+		HoursBudgetted.setText(st);
+		
+		JTextField EditWorkingHours = new JTextField(20);
+		EditWorkingHours.setSize(150,30);
+		EditWorkingHours.setLocation(30,160);
+		EditWorkingHours.setOpaque(true);
+		editActivityP.add(EditWorkingHours);
+		
+		JLabel editWorkingHours = new JLabel("Edit Working Hours:");
+		editWorkingHours.setSize(180,30);
+		editWorkingHours.setLocation(30,130);
+		editWorkingHours.setBackground(new Color(0xe5e5e5));
+		editWorkingHours.setOpaque(true);
+		editActivityP.add(editWorkingHours);
+		
+		
 		
 //		JLabel ListofEmployeesp = new JLabel("List of Employees");
 //		ListofEmployeesp.setSize(140,35);
@@ -959,7 +1060,12 @@ class CustomMouseListener implements MouseListener{
 	Activity activity;
 	JPanel viewShow;
 	JPanel viewHide;
-
+	boolean eproject=false;
+	String projectName;
+	int startDate=-1; int endDate=-1; int projectLeaderID=-1; int projectType=-1; 
+	boolean active;
+	String teststring = "";
+	
 	CustomMouseListener(){
 		
 	}
@@ -983,6 +1089,17 @@ class CustomMouseListener implements MouseListener{
 		this.viewShow = viewShow;
 		this.viewHide = viewHide;
 	}
+	CustomMouseListener(String projectName, String startDate, String endDate, String projectLeaderID, String projectType, boolean active){
+		eproject=true;
+		this.projectName=projectName;
+		this.teststring=startDate;
+//		this.startDate=Integer.parseInt(startDate);
+//		this.endDate=Integer.parseInt(endDate);
+//		this.projectLeaderID=Integer.parseInt(projectLeaderID);
+//		this.projectType=Integer.parseInt(projectType);
+//		this.active=active;
+		
+	}
 	
 	
     public void mouseClicked(MouseEvent e) {
@@ -1002,10 +1119,19 @@ class CustomMouseListener implements MouseListener{
     		viewHide.setVisible(false);
     		
     	}
+    	else if(eproject) {
+    		System.out.println(teststring);
+    		Project new_project = new Project(projectName,projectType);
+    		new_project.setStartDate(startDate);
+    		new_project.setEndDate(endDate);
+    		new_project.setProjectLeaderId(projectLeaderID);
+    		new_project.setActive(active);
+    	}
     	else {
     		viewShow.setVisible(true);
     		viewHide.setVisible(false);
     	}
+
 
     }
 

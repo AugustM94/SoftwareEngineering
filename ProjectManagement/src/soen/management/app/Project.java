@@ -17,6 +17,7 @@ public class Project {
 		this.projectID = managementApp.getProjectArray().size();
 		this.projectType = projectType;
 		this.timeStamp = (int) (System.currentTimeMillis() / 1000L);
+		this.projectLeaderId = -1;
 	}
 	
 	public void activateProject(int projectID){
