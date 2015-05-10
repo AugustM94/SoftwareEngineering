@@ -9,7 +9,7 @@ public class Activity {
 	private String name;
 	private int startDate;
 	private int endDate;
-	private static ArrayList<Integer> assignedUsers;
+	private ArrayList<Integer> assignedUsers;
 	private ArrayList<Integer> hoursSpendPerUser;
 	private int hoursBudgeted;
 	private int timeStamp;
