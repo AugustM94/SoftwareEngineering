@@ -29,21 +29,14 @@ public class GUI extends JFrame{
 	static Project currentProject = null;
 	
 	JPanel editActivityP = new JPanel();
-	JPanel adProject = new JPanel();
-	JPanel ListofEmployees = new JPanel();
-	JPanel deleteActivity = new JPanel();
-	JPanel editName = new JPanel();
-	JPanel duration = new JPanel();
-	JPanel workingHours = new JPanel();
 
-	
-	JTextField projectName = new JTextField(20);
-	JTextField startDate = new JTextField(20);
-	JTextField endDate = new JTextField(20);
-	JTextField projectLeaderID = new JTextField(20);
-	JTextField projectType = new JTextField(20);
-	JCheckBox active = new JCheckBox("Hej");
-	JLabel submit = new JLabel("Submit");
+	JTextField projectProjectName = new JTextField(20);
+	JTextField projectStartDate = new JTextField(20);
+	JTextField projectEndDate = new JTextField(20);
+	JTextField projectProjectLeaderID = new JTextField(20);
+	JTextField projectProjectType = new JTextField(20);
+	JCheckBox projectActive = new JCheckBox("");
+	JLabel projectSubmit = new JLabel("Submit");
 	
 	CustomMouseListener customMouseListener = null;
 	
@@ -61,30 +54,16 @@ public class GUI extends JFrame{
 	    setActivity();
 	    setaddActivityP();
 	    setaddprojectLeader();
-	    seteditActivityP();
+	    setaddActivityP();
+	    //seteditActivityP();
 
-	    seteditActivityP();
-	    setadProject();
-	    setListofEmployees();
-	    setdeleteActivity();
-	    seteditName();
-	    setduration();
-	    setworkingHours();
-
-	    
 	    con.add(chooseUser);
 	    con.add(Project);
 	    con.add(Activity);
-
 	    con.add(addActivityP);
 	    con.add(addprojectLeader);
 	    con.add(editActivityP);
-	    con.add(adProject);
-	    con.add(ListofEmployees);
-	    con.add(deleteActivity);
-	    con.add(editName);
-	    con.add(duration);
-	    con.add(workingHours);
+
 	    
 	    setVisible(true); // make frame visible
 	}
@@ -179,10 +158,10 @@ public class GUI extends JFrame{
 		Project.add(projectNameLabel);
 		
 		
-		projectName.setSize(150,30);
-		projectName.setLocation(290,70);
-		projectName.setOpaque(true);
-		Project.add(projectName);
+		projectProjectName.setSize(150,30);
+		projectProjectName.setLocation(290,70);
+		projectProjectName.setOpaque(true);
+		Project.add(projectProjectName);
 		
 		JLabel startDateLabel = new JLabel("Start Date:");
 		startDateLabel.setSize(100,30);
@@ -191,10 +170,10 @@ public class GUI extends JFrame{
 		startDateLabel.setOpaque(true);
 		Project.add(startDateLabel);
 		
-		startDate.setSize(150,30);
-		startDate.setLocation(290,110);
-		startDate.setOpaque(true);
-		Project.add(startDate);
+		projectStartDate.setSize(150,30);
+		projectStartDate.setLocation(290,110);
+		projectStartDate.setOpaque(true);
+		Project.add(projectStartDate);
 		
 		JLabel endDateLabel = new JLabel("End Date:");
 		endDateLabel.setSize(100,30);
@@ -204,10 +183,10 @@ public class GUI extends JFrame{
 		Project.add(endDateLabel);
 		
 		
-		endDate.setSize(150,30);
-		endDate.setLocation(290,150);
-		endDate.setOpaque(true);
-		Project.add(endDate);
+		projectEndDate.setSize(150,30);
+		projectEndDate.setLocation(290,150);
+		projectEndDate.setOpaque(true);
+		Project.add(projectEndDate);
 		
 		JLabel projectLeaderIDLabel = new JLabel("ProjectLeaderID:");
 		projectLeaderIDLabel.setSize(100,30);
@@ -217,10 +196,10 @@ public class GUI extends JFrame{
 		Project.add(projectLeaderIDLabel);
 		
 		
-		projectLeaderID.setSize(150,30);
-		projectLeaderID.setLocation(290,190);
-		projectLeaderID.setOpaque(true);
-		Project.add(projectLeaderID);
+		projectProjectLeaderID.setSize(150,30);
+		projectProjectLeaderID.setLocation(290,190);
+		projectProjectLeaderID.setOpaque(true);
+		Project.add(projectProjectLeaderID);
 		
 		JLabel projectTypeLabel = new JLabel("Project Type:");
 		projectTypeLabel.setSize(100,30);
@@ -230,28 +209,28 @@ public class GUI extends JFrame{
 		Project.add(projectTypeLabel);
 		
 		
-		projectType.setSize(150,30);
-		projectType.setLocation(290,230);
-		projectType.setOpaque(true);
-		Project.add(projectType);
+		projectProjectType.setSize(150,30);
+		projectProjectType.setLocation(290,230);
+		projectProjectType.setOpaque(true);
+		Project.add(projectProjectType);
 		
 		JLabel activeLabel = new JLabel("Active:");
 		activeLabel.setSize(100,30);
-		activeLabel.setLocation(180,310);
+		activeLabel.setLocation(180,270);
 		activeLabel.setBackground(new Color(0xe5e5e5));
 		activeLabel.setOpaque(true);
 		Project.add(activeLabel);
 
 		
-		active.setSize(150,30);
-		active.setLocation(290,310);
-		active.setOpaque(true);
-		Project.add(active);
+		projectActive.setSize(150,30);
+		projectActive.setLocation(290,270);
+		projectActive.setOpaque(true);
+		Project.add(projectActive);
 		
 		
 		JLabel submit = new JLabel("Submit");
 		submit.setSize(100,30);
-		submit.setLocation(460,310);
+		submit.setLocation(460,270);
 		submit.setBackground(new Color(0x0e2f44));
 		submit.setForeground(new Color(0xe5e5ff));
 		submit.setHorizontalAlignment(SwingConstants.CENTER);
@@ -259,44 +238,6 @@ public class GUI extends JFrame{
 		customMouseListener = new CustomMouseListener();
 		submit.addMouseListener(customMouseListener);
 		Project.add(submit);
-
-		JLabel addProject = new JLabel("Add project");
-		addProject.setSize(140,35);
-		addProject.setLocation(15,200);
-		addProject.setBackground(new Color(0x0e2f44));
-		addProject.setForeground(new Color(0xe5e5ff));
-		addProject.setHorizontalAlignment(SwingConstants.CENTER);
-		addProject.setOpaque(true);
-		addProject.addMouseListener(new CustomMouseListener(adProject, Project));
-		Project.add(addProject);
-	}
-	
-	public void setadProject(){
-		
-		adProject.setBackground(new Color(0xe5e5e5));
-		adProject.setSize(600, 400);
-		adProject.setLocation(0, 0);
-		adProject.setLayout(null);
-		adProject.setVisible(true);
-		
-		JLabel adProjectHeader = new JLabel("Add project");
-		adProjectHeader.setSize(600,30);
-		adProjectHeader.setLocation(0,0);
-		adProjectHeader.setBackground(new Color(0x0e2f44));
-		adProjectHeader.setForeground(new Color(0xe5e5ff));
-		adProjectHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		adProjectHeader.setOpaque(true);
-		adProject.add(adProjectHeader);
-		
-		JLabel backButton = new JLabel("Back");
-		backButton.setSize(100,24);
-		backButton.setBackground(new Color(0x0e2f44));
-		backButton.setForeground(new Color(0xe5e5ff));
-		backButton.setLocation(15, 3);
-		backButton.setHorizontalAlignment(SwingConstants.CENTER);
-		backButton.setOpaque(true);
-		backButton.addMouseListener(new CustomMouseListener(Project, adProject));
-		adProject.add(backButton);
 
 	}
 
@@ -348,9 +289,6 @@ public class GUI extends JFrame{
 		addProjectLeader.addMouseListener(new CustomMouseListener(addprojectLeader, Activity));
 		Activity.add(addProjectLeader);
 		
-		addActivity.addMouseListener(new CustomMouseListener(Project, Activity));
-		Activity.add(addActivity);
-		
 		JLabel[] activityLabels = new JLabel[activities.size()];
 		for (int i = 0; i < activities.size(); i++){
 			activityLabels[i] = new JLabel(activities.get(i).getName());
@@ -382,16 +320,6 @@ public class GUI extends JFrame{
 		addActivityP.setLocation(0, 0);
 		addActivityP.setLayout(null);
 		addActivityP.setVisible(false);
-	}
-	
-	public void seteditActivityP(){
-		
-		editActivityP.setBackground(new Color(0xe5e5e5));
-		editActivityP.setSize(600, 400);
-		editActivityP.setLocation(0, 0);
-		editActivityP.setLayout(null);
-		editActivityP.setVisible(false);
-	
 		
 		JLabel backButton = new JLabel("Back");
 		backButton.setSize(100,24);
@@ -413,85 +341,91 @@ public class GUI extends JFrame{
 		addActivityHeader.setOpaque(true);
 		addActivityP.add(addActivityHeader);
 		
-		JLabel projectName = new JLabel("Activity Name:");
-		projectName.setSize(100,30);
-		projectName.setLocation(30,70);
-		projectName.setBackground(new Color(0xe5e5e5));
-		projectName.setOpaque(true);
-		addActivityP.add(projectName);
+		JLabel activityNameLabel = new JLabel("Activity Name:");
+		activityNameLabel.setSize(100,30);
+		activityNameLabel.setLocation(30,70);
+		activityNameLabel.setBackground(new Color(0xe5e5e5));
+		activityNameLabel.setOpaque(true);
+		addActivityP.add(activityNameLabel);
 		
-		JTextField ProjectName = new JTextField(20);
-		ProjectName.setSize(150,30);
-		ProjectName.setLocation(150,70);
-		ProjectName.setOpaque(true);
-		addActivityP.add(ProjectName);
+		JTextField activityName = new JTextField(20);
+		activityName.setSize(150,30);
+		activityName.setLocation(150,70);
+		activityName.setOpaque(true);
+		addActivityP.add(activityName);
 		
-		JLabel startDate = new JLabel("Start Date:");
-		startDate.setSize(100,30);
-		startDate.setLocation(30,110);
-		startDate.setBackground(new Color(0xe5e5e5));
+		JLabel startDateLabel = new JLabel("Start Date:");
+		startDateLabel.setSize(100,30);
+		startDateLabel.setLocation(30,110);
+		startDateLabel.setBackground(new Color(0xe5e5e5));
+		startDateLabel.setOpaque(true);
+		addActivityP.add(startDateLabel);
+		
+		JTextField startDate = new JTextField(20);
+		startDate.setSize(150,30);
+		startDate.setLocation(150,110);
 		startDate.setOpaque(true);
 		addActivityP.add(startDate);
 		
-		JTextField StartDate = new JTextField(20);
-		StartDate.setSize(150,30);
-		StartDate.setLocation(150,110);
-		StartDate.setOpaque(true);
-		addActivityP.add(StartDate);
+		JLabel endDateLabel = new JLabel("End Date:");
+		endDateLabel.setSize(100,30);
+		endDateLabel.setLocation(30,150);
+		endDateLabel.setBackground(new Color(0xe5e5e5));
+		endDateLabel.setOpaque(true);
+		addActivityP.add(endDateLabel);
 		
-		JLabel endDate = new JLabel("End Date:");
-		endDate.setSize(100,30);
-		endDate.setLocation(30,150);
-		endDate.setBackground(new Color(0xe5e5e5));
+		JTextField endDate = new JTextField(20);
+		endDate.setSize(150,30);
+		endDate.setLocation(150,150);
 		endDate.setOpaque(true);
 		addActivityP.add(endDate);
 		
-		JTextField EndDate = new JTextField(20);
-		EndDate.setSize(150,30);
-		EndDate.setLocation(150,150);
-		EndDate.setOpaque(true);
-		addActivityP.add(EndDate);
+		JLabel hoursBudgettedLabel = new JLabel("Hours Budgetted:");
+		hoursBudgettedLabel.setSize(100,30);
+		hoursBudgettedLabel.setLocation(30,190);
+		hoursBudgettedLabel.setBackground(new Color(0xe5e5e5));
+		hoursBudgettedLabel.setOpaque(true);
+		addActivityP.add(hoursBudgettedLabel);
 		
-		JLabel hoursBudgetted = new JLabel("Hours Budgetted:");
-		hoursBudgetted.setSize(100,30);
-		hoursBudgetted.setLocation(30,190);
-		hoursBudgetted.setBackground(new Color(0xe5e5e5));
+		JTextField hoursBudgetted = new JTextField(20);
+		hoursBudgetted.setSize(150,30);
+		hoursBudgetted.setLocation(150,190);
 		hoursBudgetted.setOpaque(true);
 		addActivityP.add(hoursBudgetted);
 		
-		JTextField HoursBudgetted = new JTextField(20);
-		HoursBudgetted.setSize(150,30);
-		HoursBudgetted.setLocation(150,190);
-		HoursBudgetted.setOpaque(true);
-		addActivityP.add(HoursBudgetted);
-		
-		JLabel active = new JLabel("Active:");
-		active.setSize(100,30);
-		active.setLocation(30,270);
-		active.setBackground(new Color(0xe5e5e5));
+		JLabel activeLabel = new JLabel("Active:");
+		activeLabel.setSize(100,30);
+		activeLabel.setLocation(30,230);
+		activeLabel.setBackground(new Color(0xe5e5e5));
+		activeLabel.setOpaque(true);
+		addActivityP.add(activeLabel);
+
+		JCheckBox active = new JCheckBox("");
+		active.setSize(150,30);
+		active.setLocation(150,230);
 		active.setOpaque(true);
 		addActivityP.add(active);
 
-		JTextField Active = new JTextField(20);
-		Active.setSize(150,30);
-		Active.setLocation(150,270);
-		Active.setOpaque(true);
-		addActivityP.add(Active);
 		
-		JLabel Submit = new JLabel("Submit");
-		Submit.setSize(100,30);
-		Submit.setLocation(310,270);
-		Submit.setBackground(new Color(0x0e2f44));
-		Submit.setForeground(new Color(0xe5e5ff));
-		Submit.setHorizontalAlignment(SwingConstants.CENTER);
-		Submit.setOpaque(true);
-		addActivityP.add(Submit);
-	
-
+		
+		JLabel submitButton = new JLabel("Submit");
+		submitButton.setSize(100,30);
+		submitButton.setLocation(310,230);
+		submitButton.setBackground(new Color(0x0e2f44));
+		submitButton.setForeground(new Color(0xe5e5ff));
+		submitButton.setHorizontalAlignment(SwingConstants.CENTER);
+		submitButton.setOpaque(true);
+		addActivityP.add(submitButton);
 	}
-	public void setaddprojectLeader(){
-		ArrayList<User> users = managementApp.getUserArray();
-
+	
+	public void setediActivityP(){
+		
+		editActivityP.setBackground(new Color(0xe5e5e5));
+		editActivityP.setSize(600, 400);
+		editActivityP.setLocation(0, 0);
+		editActivityP.setLayout(null);
+		editActivityP.setVisible(false);
+		
 		JLabel backButton = new JLabel("Back");
 		backButton.setSize(100,24);
 		backButton.setBackground(new Color(0x0e2f44));
@@ -502,90 +436,24 @@ public class GUI extends JFrame{
 		backButton.addMouseListener(new CustomMouseListener(Activity, editActivityP));
 		editActivityP.add(backButton);
 		
+		JLabel addActivityHeader = new JLabel("Edit activity");
+		addActivityHeader.setSize(600,30);
+		addActivityHeader.setLocation(0,0);
+		addActivityHeader.setBackground(new Color(0x0e2f44));
+		addActivityHeader.setForeground(new Color(0xe5e5ff));
+		addActivityHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		addActivityHeader.setOpaque(true);
+		editActivityP.add(addActivityHeader);
+
+	}
+	public void setaddprojectLeader(){
+		ArrayList<User> users = managementApp.getUserArray();
+
 		addprojectLeader.setBackground(new Color(0xe5e5e5));
 		addprojectLeader.setSize(600, 400);
 		addprojectLeader.setLocation(0, 0);
 		addprojectLeader.setLayout(null);
 		addprojectLeader.setVisible(false);
-		
-		
-		JLabel editActivityHeader = new JLabel("Edit activity");
-		editActivityHeader.setSize(600,30);
-		editActivityHeader.setLocation(0,0);
-		editActivityHeader.setBackground(new Color(0x0e2f44));
-		editActivityHeader.setForeground(new Color(0xe5e5ff));
-		editActivityHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		editActivityHeader.setOpaque(true);
-		editActivityP.add(editActivityHeader);
-		
-		JLabel ListofEmployeesp = new JLabel("List of Employees");
-		ListofEmployeesp.setSize(140,35);
-		ListofEmployeesp.setBackground(new Color(0x0e2f44));
-		ListofEmployeesp.setForeground(new Color(0xe5e5ff));
-		ListofEmployeesp.setLocation(15, 40);
-		ListofEmployeesp.setHorizontalAlignment(SwingConstants.CENTER);
-		ListofEmployeesp.setOpaque(true);
-		ListofEmployeesp.addMouseListener(new CustomMouseListener(ListofEmployees, editActivityP));
-		editActivityP.add(ListofEmployeesp);
-		
-		JLabel deleteActivityL = new JLabel("Delete activity");
-		deleteActivityL.setSize(140,35);
-		deleteActivityL.setBackground(new Color(0x0e2f44));
-		deleteActivityL.setForeground(new Color(0xe5e5ff));
-		deleteActivityL.setLocation(15, 80);
-		deleteActivityL.setHorizontalAlignment(SwingConstants.CENTER);
-		deleteActivityL.setOpaque(true);
-		deleteActivityL.addMouseListener(new CustomMouseListener(deleteActivity, editActivityP));
-		editActivityP.add(deleteActivityL);
-		
-		JLabel editNameL = new JLabel("Edit name");
-		editNameL.setSize(140,35);
-		editNameL.setBackground(new Color(0x0e2f44));
-		editNameL.setForeground(new Color(0xe5e5ff));
-		editNameL.setLocation(15, 120);
-		editNameL.setHorizontalAlignment(SwingConstants.CENTER);
-		editNameL.setOpaque(true);
-		editNameL.addMouseListener(new CustomMouseListener(editName, editActivityP));
-		editActivityP.add(editNameL);
-		
-		JLabel DurationL = new JLabel("Duration");
-		DurationL.setSize(140,35);
-		DurationL.setBackground(new Color(0x0e2f44));
-		DurationL.setForeground(new Color(0xe5e5ff));
-		DurationL.setLocation(15, 160);
-		DurationL.setHorizontalAlignment(SwingConstants.CENTER);
-		DurationL.setOpaque(true);
-		DurationL.addMouseListener(new CustomMouseListener(duration, editActivityP));
-		editActivityP.add(DurationL);
-		
-		JLabel workingHoursL = new JLabel("Working Hours");
-		workingHoursL.setSize(140,35);
-		workingHoursL.setBackground(new Color(0x0e2f44));
-		workingHoursL.setForeground(new Color(0xe5e5ff));
-		workingHoursL.setLocation(15, 200);
-		workingHoursL.setHorizontalAlignment(SwingConstants.CENTER);
-		workingHoursL.setOpaque(true);
-		workingHoursL.addMouseListener(new CustomMouseListener(workingHours, editActivityP));
-		editActivityP.add(workingHoursL);
-		
-	}
-	public void setListofEmployees(){
-		ArrayList<User> users = managementApp.getUserArray();
-		
-		ListofEmployees.setBackground(new Color(0xe5e5e5));
-		ListofEmployees.setSize(600, 400);
-		ListofEmployees.setLocation(0, 0);
-		ListofEmployees.setLayout(null);
-		ListofEmployees.setVisible(true);
-		
-		JLabel ListofEmployeesHeader = new JLabel("List of Employees");
-		ListofEmployeesHeader.setSize(600,30);
-		ListofEmployeesHeader.setLocation(0,0);
-		ListofEmployeesHeader.setBackground(new Color(0x0e2f44));
-		ListofEmployeesHeader.setForeground(new Color(0xe5e5ff));
-		ListofEmployeesHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		ListofEmployeesHeader.setOpaque(true);
-		ListofEmployees.add(ListofEmployeesHeader);
 		
 		JLabel backButton = new JLabel("Back");
 		backButton.setSize(100,24);
@@ -597,139 +465,17 @@ public class GUI extends JFrame{
 		backButton.addMouseListener(new CustomMouseListener(Activity, addprojectLeader));
 		addprojectLeader.add(backButton);
 		
-		JLabel addprojectLeaderHeader = new JLabel("Add Project Leader");
-		addprojectLeaderHeader.setSize(600,30);
-		addprojectLeaderHeader.setLocation(0,0);
-		addprojectLeaderHeader.setBackground(new Color(0x0e2f44));
-		addprojectLeaderHeader.setForeground(new Color(0xe5e5ff));
-		addprojectLeaderHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		addprojectLeaderHeader.setOpaque(true);
-		addprojectLeader.add(addprojectLeaderHeader);
-		
-		JLabel[] userLabels = new JLabel[users.size()];
-		for (int i = 0; i < users.size(); i++){
-			userLabels[i] = new JLabel(users.get(i).getName());
-			userLabels[i].setSize(140,35);
-			userLabels[i].setLocation(15, (i+1)*40);
-			userLabels[i].setBackground(new Color(0x8697a1));
-			userLabels[i].setHorizontalAlignment(SwingConstants.CENTER);
-			userLabels[i].setOpaque(true);
-			//userLabels[i].addMouseListener(new CustomMouseListener(Project, chooseUser, users.get(i)));
-			addprojectLeader.add(userLabels[i]);
-		}
-
-		backButton.addMouseListener(new CustomMouseListener(editActivityP, ListofEmployees));
-		ListofEmployees.add(backButton);
+		JLabel addActivityHeader = new JLabel("Edit activity");
+		addActivityHeader.setSize(600,30);
+		addActivityHeader.setLocation(0,0);
+		addActivityHeader.setBackground(new Color(0x0e2f44));
+		addActivityHeader.setForeground(new Color(0xe5e5ff));
+		addActivityHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		addActivityHeader.setOpaque(true);
+		addprojectLeader.add(addActivityHeader);
 		
 	}
-	public void setdeleteActivity(){
-		
-		deleteActivity.setBackground(new Color(0xe5e5e5));
-		deleteActivity.setSize(600, 400);
-		deleteActivity.setLocation(0, 0);
-		deleteActivity.setLayout(null);
-		deleteActivity.setVisible(true);
-		
-		JLabel deleteActivityHeader = new JLabel("Delete Activity");
-		deleteActivityHeader.setSize(600,30);
-		deleteActivityHeader.setLocation(0,0);
-		deleteActivityHeader.setBackground(new Color(0x0e2f44));
-		deleteActivityHeader.setForeground(new Color(0xe5e5ff));
-		deleteActivityHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		deleteActivityHeader.setOpaque(true);
-		deleteActivity.add(deleteActivityHeader);
-		
-		JLabel backButton = new JLabel("Back");
-		backButton.setSize(100,24);
-		backButton.setBackground(new Color(0x0e2f44));
-		backButton.setForeground(new Color(0xe5e5ff));
-		backButton.setLocation(15, 3);
-		backButton.setHorizontalAlignment(SwingConstants.CENTER);
-		backButton.setOpaque(true);
-		backButton.addMouseListener(new CustomMouseListener(editActivityP, deleteActivity));
-		deleteActivity.add(backButton);
-	}
-	public void seteditName(){
-		
-		editName.setBackground(new Color(0xe5e5e5));
-		editName.setSize(600, 400);
-		editName.setLocation(0, 0);
-		editName.setLayout(null);
-		editName.setVisible(true);
-		
-		JLabel editNameHeader = new JLabel("Edit name");
-		editNameHeader.setSize(600,30);
-		editNameHeader.setLocation(0,0);
-		editNameHeader.setBackground(new Color(0x0e2f44));
-		editNameHeader.setForeground(new Color(0xe5e5ff));
-		editNameHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		editNameHeader.setOpaque(true);
-		editName.add(editNameHeader);
-		
-		JLabel backButton = new JLabel("Back");
-		backButton.setSize(100,24);
-		backButton.setBackground(new Color(0x0e2f44));
-		backButton.setForeground(new Color(0xe5e5ff));
-		backButton.setLocation(15, 3);
-		backButton.setHorizontalAlignment(SwingConstants.CENTER);
-		backButton.setOpaque(true);
-		backButton.addMouseListener(new CustomMouseListener(editActivityP, editName));
-		editName.add(backButton);
-	}
-	public void setduration(){
-		
-		duration.setBackground(new Color(0xe5e5e5));
-		duration.setSize(600, 400);
-		duration.setLocation(0, 0);
-		duration.setLayout(null);
-		duration.setVisible(true);
-		
-		JLabel durationHeader = new JLabel("Edit name");
-		durationHeader.setSize(600,30);
-		durationHeader.setLocation(0,0);
-		durationHeader.setBackground(new Color(0x0e2f44));
-		durationHeader.setForeground(new Color(0xe5e5ff));
-		durationHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		durationHeader.setOpaque(true);
-		duration.add(durationHeader);
-		
-		JLabel backButton = new JLabel("Back");
-		backButton.setSize(100,24);
-		backButton.setBackground(new Color(0x0e2f44));
-		backButton.setForeground(new Color(0xe5e5ff));
-		backButton.setLocation(15, 3);
-		backButton.setHorizontalAlignment(SwingConstants.CENTER);
-		backButton.setOpaque(true);
-		backButton.addMouseListener(new CustomMouseListener(editActivityP, duration));
-		duration.add(backButton);
-	}
-	public void setworkingHours(){
-		
-		workingHours.setBackground(new Color(0xe5e5e5));
-		workingHours.setSize(600, 400);
-		workingHours.setLocation(0, 0);
-		workingHours.setLayout(null);
-		workingHours.setVisible(true);
-		
-		JLabel workingHoursHeader = new JLabel("Edit name");
-		workingHoursHeader.setSize(600,30);
-		workingHoursHeader.setLocation(0,0);
-		workingHoursHeader.setBackground(new Color(0x0e2f44));
-		workingHoursHeader.setForeground(new Color(0xe5e5ff));
-		workingHoursHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		workingHoursHeader.setOpaque(true);
-		workingHours.add(workingHoursHeader);
-		
-		JLabel backButton = new JLabel("Back");
-		backButton.setSize(100,24);
-		backButton.setBackground(new Color(0x0e2f44));
-		backButton.setForeground(new Color(0xe5e5ff));
-		backButton.setLocation(15, 3);
-		backButton.setHorizontalAlignment(SwingConstants.CENTER);
-		backButton.setOpaque(true);
-		backButton.addMouseListener(new CustomMouseListener(editActivityP, workingHours));
-		workingHours.add(backButton);
-	}
+	
 	class CustomMouseListener implements MouseListener{
 		User user;
 		Project project;
@@ -781,11 +527,30 @@ public class GUI extends JFrame{
 	    		
 	    	}
 	    	else if(eproject){
-	    		if (e.getSource() == submit) {
-	    			System.out.println(startDate.getText());
+	    		if (e.getSource() == projectSubmit) {
 				}
+	    		Project newProject = new Project(projectProjectName.getText(), Integer.parseInt(projectProjectType.getText()));
 	    		
-	    		
+	    		if(projectStartDate.getText().length() > 0){
+	    			newProject.setStartDate(Integer.parseInt(projectStartDate.getText()));
+	    		}
+	    	
+		    	if(projectEndDate.getText().length() > 0){
+		    		newProject.setStartDate(Integer.parseInt(projectEndDate.getText()));
+		    	}
+		    	
+		    	if(projectProjectLeaderID.getText().length() > 0){
+		    		newProject.setProjectLeaderId(Integer.parseInt(projectProjectLeaderID.getText()));
+		    	}
+		    	
+		    	if(projectActive.getText().length() > 0){
+		    		newProject.setActive(projectActive.isSelected());
+		    		
+		    	}
+		    System.out.println(managementApp.projects.size());
+		    managementApp.projects.add(newProject);
+		    System.out.println(managementApp.projects.size());
+		    managementApp.saveProjects();
 	    	}
 	    	else {
 	    		viewShow.setVisible(true);
