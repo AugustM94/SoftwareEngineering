@@ -41,6 +41,13 @@ public class Activity {
 		return index;
 	}
 	
+	public int getTotalHoursSpend(){
+		int counter = 0;
+		for(int i = 0; i < hoursSpendPerUser.size(); i++){
+			counter += hoursSpendPerUser.get(i);
+		}
+		return counter;
+	}
 	
 	public int getProjectID() {
 		return projectID;
