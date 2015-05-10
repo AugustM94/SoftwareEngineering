@@ -28,10 +28,18 @@ public class ManagementApp {
 		loadActivities();
 
 		logInUser(1);
-		System.out.println(getAssignedActivitiesForUser(sessionUser).toString());
-
-		// System.out.println(activities.get(0).getHoursSpendPerUser().get(1));
-		//System.out.println(activities.get(0).getHoursSpendPerUser().toString());
+		System.out.println(activities.size());
+		System.out.println(activities.get(0).getActivityID());
+//		assingUserToActivity(0, 1);
+		System.out.println(activities.get(0).getAssignedUsers());
+		registerWorkingHours(0, 5);
+		System.out.println(activities.get(0).getHoursSpendPerUser());
+		
+//		System.out.println(getAssignedActivitiesForUser(sessionUser).toString());
+//		registerWorkingHours(0, 5);
+//		registerWorkingHours(0, 10);
+//		System.out.println(activities.get(0).getHoursSpendPerUser().get(1));
+	//	System.out.println(activities.get(0).getHoursSpendPerUser().toString());
 
 		// System.out.println(activities.get(0).getName());
 		// //User new_user = new User("Berit");
@@ -59,6 +67,7 @@ public class ManagementApp {
 	public void saveProject(Project project) throws userNotLoggedInException {
 		if (userLoggedIn == true) {
 			projects.add(project);
+			//saveProjects();
 		} else {
 			throw new userNotLoggedInException(
 					"You are not logged in, please select a user.");
@@ -88,7 +97,8 @@ public class ManagementApp {
 	}
 	
 	public static void assingUserToActivity(int activityID, int userID){
-		activities.get(activityID).addToAssignedUsers(userID);
+		activities.get(activityID).setNewAssignedUsers(userID);
+		
 	}
 
 	public static ArrayList<Integer> getProjectLeaderProjects(int userID){
@@ -190,7 +200,7 @@ public class ManagementApp {
 				assignedUsers.add(assignedUser);
 			}
 
-			System.out.println(hoursSpendPerUser.get(0));
+		//	System.out.println(hoursSpendPerUser.get(0));
 
 			Activity activityElement = new Activity(name, projectID);
 			activityElement.setName(name);
