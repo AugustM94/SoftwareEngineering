@@ -66,6 +66,14 @@ public class ManagementApp {
 		// System.out.println("Amount of users: " + users.size());
 		// System.out.println(printProjectSummary(0));
 		// System.out.println("Amount of activities: "+ activities.size());
+<<<<<<< Updated upstream
+=======
+
+	//	new GUI();
+
+		//new GUI();
+
+>>>>>>> Stashed changes
 
 		new GUI();
 		
@@ -412,7 +420,6 @@ public class ManagementApp {
 	}
 
 	public static String printProjectSummary(int ID) {
-		System.out.println(projects.size());
 		Project p = projects.get(ID);
 		String type;
 
@@ -455,9 +462,9 @@ public class ManagementApp {
 		return sessionUser;
 	}
 
-	public void setSessionUser(int sessionUser) {
-		this.sessionUser = sessionUser;
-	}
+//	public void setSessionUser(int sessionUser) {
+//		this.sessionUser = sessionUser;
+//	}
 
 	public ArrayList<Project> getProjectArray() {
 		return projects;
