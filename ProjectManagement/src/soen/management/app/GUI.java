@@ -28,7 +28,7 @@ public class GUI extends JFrame{
 	JPanel chooseUser = new JPanel();
 	JPanel Project = new JPanel();
 	JPanel Activity = new JPanel();
-<<<<<<< Updated upstream
+
 	JPanel addActivityP = new JPanel();
 	JPanel addprojectLeader = new JPanel();
 	JPanel editActivityP = new JPanel();
@@ -40,7 +40,6 @@ public class GUI extends JFrame{
 	
 	static Project currentProject = null;
 	
-=======
 	JPanel editActivityP = new JPanel();
 	JPanel adProject = new JPanel();
 	JPanel ListofEmployees = new JPanel();
@@ -55,7 +54,7 @@ public class GUI extends JFrame{
 	/**
 	 * 
 	 */
->>>>>>> Stashed changes
+
 	GUI(){
 	    super("Project Management"); 
 	    
@@ -66,7 +65,6 @@ public class GUI extends JFrame{
 	    setchooseUser();
 	    setProject();
 	    setActivity();
-<<<<<<< Updated upstream
 	    setaddActivityP();
 	    setaddprojectLeader();
 	    seteditActivityP();
@@ -75,7 +73,7 @@ public class GUI extends JFrame{
 //	    seteditName();
 //	    setduration();
 //	    setworkingHours();
-=======
+
 	    seteditActivityP();
 	    setadProject();
 	    setListofEmployees();
@@ -83,12 +81,12 @@ public class GUI extends JFrame{
 	    seteditName();
 	    setduration();
 	    setworkingHours();
->>>>>>> Stashed changes
+
 	    
 	    con.add(chooseUser);
 	    con.add(Project);
 	    con.add(Activity);
-<<<<<<< Updated upstream
+
 	    con.add(addActivityP);
 	    con.add(addprojectLeader);
 	    con.add(editActivityP);
@@ -97,7 +95,7 @@ public class GUI extends JFrame{
 //	    con.add(editName);
 //	    con.add(duration);
 //	    con.add(workingHours);
-=======
+
 	    con.add(editActivityP);
 	    con.add(adProject);
 	    con.add(ListofEmployees);
@@ -105,7 +103,6 @@ public class GUI extends JFrame{
 	    con.add(editName);
 	    con.add(duration);
 	    con.add(workingHours);
->>>>>>> Stashed changes
 	    
 	    setVisible(true); // make frame visible
 	}

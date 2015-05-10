@@ -1,6 +1,9 @@
 package soen.management.app;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,6 +30,7 @@ public class ManagementApp {
 		loadUsers();
 		loadActivities();
 
+		
 		logInUser(1);
 		System.out.println(activities.size());
 		System.out.println(activities.get(0).getActivityID());
@@ -53,7 +57,11 @@ public class ManagementApp {
 		// System.out.println("Amount of users: " + users.size());
 		// System.out.println(printProjectSummary(0));
 		// System.out.println("Amount of activities: "+ activities.size());
+<<<<<<< HEAD
 	//	new GUI();
+=======
+		//new GUI();
+>>>>>>> origin/master
 
 		// saveUsers();
 		// saveProjects();
@@ -76,6 +84,13 @@ public class ManagementApp {
 
 	}
 
+	public static String unixToDate(int unixTime) {
+		Date time=new Date((long)unixTime*1000);
+		SimpleDateFormat ft = new SimpleDateFormat("dd. MMMM yyyy 'kl 'HH:mm");
+		return ft.format(time);
+	}
+	
+	
 	public void addProjectLeader(int userID, int projectID)
 			throws userNotLoggedInException {
 		if (userLoggedIn == true) {
