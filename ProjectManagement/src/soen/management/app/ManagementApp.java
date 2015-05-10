@@ -1,8 +1,11 @@
 package soen.management.app;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -39,6 +42,13 @@ public class ManagementApp {
 		System.out.println(activities.get(0).getHoursSpendPerUser());
 		System.out.println(printProjectSummary(0));
 		
+		try {
+			System.out.println("loebenummer: " + identifierGenerator(10));
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 //		System.out.println(getAssignedActivitiesForUser(sessionUser).toString());
 //		registerWorkingHours(0, 5);
 //		registerWorkingHours(0, 10);
@@ -58,7 +68,15 @@ public class ManagementApp {
 		// System.out.println("Amount of activities: "+ activities.size());
 
 		new GUI();
-
+		
+		/*
+		try {
+			System.out.println(dateToUnix("January 2, 2010"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+*/
 		// saveUsers();
 		// saveProjects();
 
@@ -84,6 +102,20 @@ public class ManagementApp {
 		Date time=new Date((long)unixTime*1000);
 		SimpleDateFormat ft = new SimpleDateFormat("dd. MMMM yyyy 'kl 'HH:mm");
 		return ft.format(time);
+	}
+	
+	public static int dateToUnix(String dateTime) throws ParseException{
+		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+		Date date = format.parse(dateTime);
+		return (int) (date.getTime()/1000);
+	}
+	
+	public static int identifierGenerator(int projectId) throws ParseException{
+		Date date = new Date();
+		long year = date.getTime();
+		SimpleDateFormat ft = new SimpleDateFormat("yy");
+		
+		return Integer.parseInt( ft.format(year));
 	}
 	
 	
