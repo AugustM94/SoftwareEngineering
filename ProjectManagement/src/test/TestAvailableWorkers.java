@@ -30,6 +30,9 @@ public class TestAvailableWorkers {
 		ArrayList<Activity> activities = managementApp.getActivityArray();
 		ArrayList<User> users = managementApp.getUserArray();
 		int projectSize = projects.size();
+		int startRequestTime = 1430438400; // 1. may 2015
+		int endRequestTime = 1431648000;  // 15. may 2015
+		
 		
 		// log in user
 		User user = new User("test project leader");
@@ -38,7 +41,7 @@ public class TestAvailableWorkers {
 		User user2 = new User("test worker 1");
 		user2.setUserID(2);
 		users.add(user2);
-		User user3 = new User("test worker 1");
+		User user3 = new User("test worker 2");
 		user3.setUserID(3);
 		users.add(user3);
 		
@@ -66,50 +69,82 @@ public class TestAvailableWorkers {
 			}
 		}
 		
+		// test if correctly returned project with user as projectLeader
+		assertEquals(0, (int)projectLeaderProjects.get(0));
+		
+		
 		Project selectedProject;
 		// if user is project leader of at least 1 project
 		if (projectLeaderProjects.size() > 0){
 			selectedProject = projects.get(0);
-			
 		
 			// check if there are currently no activities 
 			assertEquals(0, activities.size());
 			
+			// new activity to search for users for
 			Activity mainActivity = new Activity("Main activity",selectedProject.getProjectID());
 			activities.add(mainActivity);
 			
+			
+			// adding activities to have something to search among
 			// user 2's activity from February to April
 			Activity workingActivity1 = new Activity("worker activity 01.feb-15.apr",selectedProject.getProjectID());
-			workingActivity1.setStartDate(1422778500);
-			workingActivity1.setEndDate(1429113600);
-			ArrayList<Integer> assignedUsers1 = new ArrayList<Integer>();
+			workingActivity1.setStartDate(1422748800);
+			workingActivity1.setEndDate(1429056000);
+			ArrayList<Integer> assignedUsers1 = workingActivity1.getAssignedUsers();
 			assignedUsers1.add(user2.getUserID());
 			workingActivity1.setAssignedUsers(assignedUsers1);
 			activities.add(workingActivity1);
 			
 			// user 2's activity from October to December
 			Activity workingActivity2 = new Activity("worker activity 01.oct-01.dec",selectedProject.getProjectID());
-			workingActivity2.setStartDate(1443687300);
-			workingActivity2.setEndDate(1448985600);
-			ArrayList<Integer> assignedUsers2 = new ArrayList<Integer>();
+			workingActivity2.setStartDate(1443657600);
+			workingActivity2.setEndDate(1448928000);
+			ArrayList<Integer> assignedUsers2 = workingActivity2.getAssignedUsers();
 			assignedUsers2.add(user2.getUserID());
 			workingActivity2.setAssignedUsers(assignedUsers2);
 			activities.add(workingActivity2);
+
 			
 			// user 3's activity from May to June
 			Activity workingActivity3 = new Activity("worker activity 01.may-01.jun",selectedProject.getProjectID());
-			workingActivity3.setStartDate(1430468100);
-			workingActivity3.setEndDate(1433146500);
-			ArrayList<Integer> assignedUsers3 = new ArrayList<Integer>();
+			workingActivity3.setStartDate(1430438400);
+			workingActivity3.setEndDate(1433116800);
+			ArrayList<Integer> assignedUsers3 =  workingActivity3.getAssignedUsers();
 			assignedUsers3.add(user3.getUserID());
 			workingActivity3.setAssignedUsers(assignedUsers3);
 			activities.add(workingActivity3);
 		}
-		System.out.println( activities.get(0).getAssignedUsers());
-	/*
-		for (int i = 0; i < activities.size(); i++){
-			System.out.println( activities.get(i).getAssignedUsers());
+		
+		
+		
+		int[] availableUsers = new int[users.size()];
+	
+		for (int i = 0; i < users.size(); i++){
+			for (int j = 0; j < activities.size(); j++){
+				for (int k = 0; k < activities.get(j).getAssignedUsers().size(); k++)
+				{		
+					if (activities.get(j).getAssignedUsers().get(k) == users.get(i).getUserID()){
+						if ( (activities.get(j).getStartDate() < startRequestTime && activities.get(j).getEndDate() > startRequestTime) ||
+								(activities.get(j).getStartDate() < endRequestTime && activities.get(j).getEndDate() > endRequestTime)){
+								availableUsers[i] = 1;
+						}
+					}
+				}
+			}
 		}
-		*/
+		
+		// create array of expected outputs
+		int[] expectedAvailableUsers =  new int[users.size()];
+		expectedAvailableUsers[0] = 0;
+		expectedAvailableUsers[1] = 0;
+		expectedAvailableUsers[2] = 1;	
+		
+		// check if expected available users
+		for (int i = 0; i < availableUsers.length; i++){
+			assertEquals(expectedAvailableUsers[i], availableUsers[i]);
+		}
+		
+		
 	}
 }

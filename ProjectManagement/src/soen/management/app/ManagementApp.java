@@ -1,6 +1,9 @@
 package soen.management.app;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,11 +30,21 @@ public class ManagementApp {
 		loadUsers();
 		loadActivities();
 
+		
 		logInUser(1);
-		System.out.println(getAssignedActivitiesForUser(sessionUser).toString());
-
-		// System.out.println(activities.get(0).getHoursSpendPerUser().get(1));
-		//System.out.println(activities.get(0).getHoursSpendPerUser().toString());
+		System.out.println(activities.size());
+		System.out.println(activities.get(0).getActivityID());
+//		assingUserToActivity(0, 1);
+		System.out.println(activities.get(0).getAssignedUsers());
+		registerWorkingHours(0, 5);
+		System.out.println(activities.get(0).getHoursSpendPerUser());
+		System.out.println(printProjectSummary(0));
+		
+//		System.out.println(getAssignedActivitiesForUser(sessionUser).toString());
+//		registerWorkingHours(0, 5);
+//		registerWorkingHours(0, 10);
+//		System.out.println(activities.get(0).getHoursSpendPerUser().get(1));
+	//	System.out.println(activities.get(0).getHoursSpendPerUser().toString());
 
 		// System.out.println(activities.get(0).getName());
 		// //User new_user = new User("Berit");
@@ -44,7 +57,11 @@ public class ManagementApp {
 		// System.out.println("Amount of users: " + users.size());
 		// System.out.println(printProjectSummary(0));
 		// System.out.println("Amount of activities: "+ activities.size());
-		new GUI();
+<<<<<<< HEAD
+	//	new GUI();
+=======
+		//new GUI();
+>>>>>>> origin/master
 
 		// saveUsers();
 		// saveProjects();
@@ -59,6 +76,7 @@ public class ManagementApp {
 	public void saveProject(Project project) throws userNotLoggedInException {
 		if (userLoggedIn == true) {
 			projects.add(project);
+			//saveProjects();
 		} else {
 			throw new userNotLoggedInException(
 					"You are not logged in, please select a user.");
@@ -66,6 +84,13 @@ public class ManagementApp {
 
 	}
 
+	public static String unixToDate(int unixTime) {
+		Date time=new Date((long)unixTime*1000);
+		SimpleDateFormat ft = new SimpleDateFormat("dd. MMMM yyyy 'kl 'HH:mm");
+		return ft.format(time);
+	}
+	
+	
 	public void addProjectLeader(int userID, int projectID)
 			throws userNotLoggedInException {
 		if (userLoggedIn == true) {
@@ -88,7 +113,8 @@ public class ManagementApp {
 	}
 	
 	public static void assingUserToActivity(int activityID, int userID){
-		activities.get(activityID).addToAssignedUsers(userID);
+		activities.get(activityID).setNewAssignedUsers(userID);
+		
 	}
 
 	public static ArrayList<Integer> getProjectLeaderProjects(int userID){
@@ -101,6 +127,39 @@ public class ManagementApp {
 		
 		return projectLeaderProjects;
 	}
+	
+	public static int getTotalHoursSpentForProject(int projectID){
+		int total = 0;
+		ArrayList<Integer> a = getActivitiesForProject(projectID);
+		for(int i = 0; i < a.size(); i++){
+			total+=activities.get(i).getTotalHoursSpend();
+		}
+		
+		return total;
+		
+	}
+	
+	public static int getTotalHoursBudgetForProject(int projectID){
+		int total = 0;
+		ArrayList<Integer> a = getActivitiesForProject(projectID);
+		for(int i = 0; i < a.size(); i++){
+			total+=activities.get(i).getHoursBudgeted();
+		}
+		
+		return total;
+		
+	}
+	
+	public static ArrayList<Integer> getActivitiesForProject(int projectID){
+		ArrayList<Integer> returnArray = new ArrayList<Integer>();
+		for (int i = 0; i < activities.size(); i++) {
+			if (activities.get(i).getProjectID() == projectID) {
+				returnArray.add(i);
+			}
+		}
+		return returnArray;
+	}
+	
 	//Return the IDs of activites which a user is assigned. 
 	public static ArrayList<Integer> getAssignedActivitiesForUser(int user)
 			throws userNotLoggedInException {
@@ -190,7 +249,7 @@ public class ManagementApp {
 				assignedUsers.add(assignedUser);
 			}
 
-			System.out.println(hoursSpendPerUser.get(0));
+		//	System.out.println(hoursSpendPerUser.get(0));
 
 			Activity activityElement = new Activity(name, projectID);
 			activityElement.setName(name);
@@ -324,9 +383,11 @@ public class ManagementApp {
 		fileReader.saveFileData(jsArray.toString(), "users");
 	}
 
-	public String printProjectSummary(int ID) {
+	public static String printProjectSummary(int ID) {
+		System.out.println(projects.size());
 		Project p = projects.get(ID);
 		String type;
+
 
 		if (p.getProjectType() == 0) {
 			type = "In house";
@@ -335,12 +396,21 @@ public class ManagementApp {
 		}
 
 		String s = "Project summary:" + "\n" + "Name: " + p.getName() + "\n"
-				+ "Project leader: "
-				+ users.get(p.getProjectLeaderId()).getName() + "\n"
+				+ "ProjectLeader: " + getProjectLeaderName(ID) + "\n"
 				+ "Project type: " + type + "\n" + "Start date: "
 				+ p.getStartDate() + "\n" + "End date: " + p.getEndDate()
-				+ "\n" + "Spent/budgeted hours: " + "Noget her!!" + "\n" + "";
+				+ "\n" + "Spent/budgeted hours: " + getTotalHoursSpentForProject(ID) + "/"+ getTotalHoursBudgetForProject(ID) ;
 
+		return s;
+	}
+	
+	public static String getProjectLeaderName(int projectID){
+		String s = "No project leader assigned";
+		int projectLeader = projects.get(projectID).getProjectLeaderId();
+		if(projectLeader != -1){
+			s = users.get(projectLeader).getName();
+		}
+		
 		return s;
 	}
 

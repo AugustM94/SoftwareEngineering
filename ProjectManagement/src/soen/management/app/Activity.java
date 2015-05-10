@@ -9,7 +9,7 @@ public class Activity {
 	private String name;
 	private int startDate;
 	private int endDate;
-	private static ArrayList<Integer> assignedUsers;
+	private ArrayList<Integer> assignedUsers;
 	private ArrayList<Integer> hoursSpendPerUser;
 	private int hoursBudgeted;
 	private int timeStamp;
@@ -18,17 +18,41 @@ public class Activity {
 	
 	public Activity(String name, int projectID){
 		this.name = name;
-		this.activityID = managementApp.getProjectArray().size();
+		this.activityID = managementApp.getActivityArray().size();
 		this.projectID = projectID;
 		this.timeStamp = (int) (System.currentTimeMillis() / 1000L);
 		this.assignedUsers = new ArrayList<Integer>();
+		this.hoursSpendPerUser = new ArrayList<Integer>();
 	}
 	
 	
-	// Getters and setters
+	
+	// Getters and setters	
+	public int getAssignedUserIndex(int target){
+			int index = -1;
+			for(int i = 0; i < assignedUsers.size();i++){
+				if(assignedUsers.get(i)==target){
+					index = i;
+					break;
+				}
+				
+			}
+		
+		return index;
+	}
+	
+	public int getTotalHoursSpend(){
+		int counter = 0;
+		for(int i = 0; i < hoursSpendPerUser.size(); i++){
+			counter += hoursSpendPerUser.get(i);
+		}
+		return counter;
+	}
+	
 	public int getProjectID() {
 		return projectID;
 	}
+	
 
 	public void setProjectID(int projectID) {
 		this.projectID = projectID;
@@ -66,8 +90,9 @@ public class Activity {
 		this.assignedUsers = assignedUsers;
 	}
 
-	public void addToAssignedUsers(int userID) {
+	public void setNewAssignedUsers(int userID) {
 		assignedUsers.add(userID);
+		hoursSpendPerUser.add(0);
 	}
 	
 	public ArrayList<Integer> getHoursSpendPerUser() {
@@ -111,7 +136,16 @@ public class Activity {
 	}
 	
 	public void regeisterHours(int hours){
-		hoursSpendPerUser.set(managementApp.getSessionUser(), hoursSpendPerUser.get(managementApp.getSessionUser())+hours);
+		int index = getAssignedUserIndex(managementApp.getSessionUser());
+		
+		if(index != -1){
+			hoursSpendPerUser.set(index, hoursSpendPerUser.get(index)+hours);
+		}else{
+			setNewAssignedUsers(managementApp.getSessionUser());
+			hoursSpendPerUser.set(getAssignedUserIndex(managementApp.getSessionUser()), hours);
+		}
+		
+		
 	}
 	
 	
