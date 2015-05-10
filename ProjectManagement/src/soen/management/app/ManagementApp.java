@@ -56,7 +56,7 @@ public class ManagementApp {
 		// System.out.println("Amount of users: " + users.size());
 		// System.out.println(printProjectSummary(0));
 		// System.out.println("Amount of activities: "+ activities.size());
-		//new GUI();
+		new GUI();
 
 		// saveUsers();
 		// saveProjects();
