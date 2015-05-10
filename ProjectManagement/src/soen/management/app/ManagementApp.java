@@ -1,6 +1,5 @@
 package soen.management.app;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -57,15 +56,8 @@ public class ManagementApp {
 		// System.out.println("Amount of users: " + users.size());
 		// System.out.println(printProjectSummary(0));
 		// System.out.println("Amount of activities: "+ activities.size());
-<<<<<<< HEAD
+
 		new GUI();
-=======
-<<<<<<< HEAD
-	//	new GUI();
-=======
-		//new GUI();
->>>>>>> origin/master
->>>>>>> origin/master
 
 		// saveUsers();
 		// saveProjects();
