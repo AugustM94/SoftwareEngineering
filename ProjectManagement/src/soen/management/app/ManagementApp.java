@@ -10,6 +10,8 @@ import java.util.Locale;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+//Methods used only in GUI is marked with comment //GUIONLY and is not included in code coverage. 
+
 public class ManagementApp {
 	static ArrayList<Project> projects = new ArrayList<Project>();
 	static ArrayList<User> users = new ArrayList<User>();
@@ -17,11 +19,17 @@ public class ManagementApp {
 	static FileReader fileReader = new FileReader();
 	private static boolean userLoggedIn = false;
 	static int sessionUser = 0;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
 
 	public static void main(String[] args) throws userNotLoggedInException {
 		loadProjects();
 		loadUsers();
 		loadActivities();
+<<<<<<< HEAD
 		
 		logInUser(1);
 		System.out.println(activities.size());
@@ -38,6 +46,8 @@ public class ManagementApp {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+=======
+>>>>>>> origin/master
 		
 //		System.out.println(getAssignedActivitiesForUser(sessionUser).toString());
 //		registerWorkingHours(0, 5);
@@ -56,8 +66,13 @@ public class ManagementApp {
 		// System.out.println("Amount of users: " + users.size());
 		// System.out.println(printProjectSummary(0));
 		// System.out.println("Amount of activities: "+ activities.size());
+<<<<<<< HEAD
+=======
 
-		new GUI();
+
+>>>>>>> origin/master
+
+		//new GUI();
 		
 		/*
 		try {
@@ -75,6 +90,10 @@ public class ManagementApp {
 	public static void logInUser(int userID) {
 		userLoggedIn = true;
 		sessionUser = userID;
+	}
+	
+	public static void logOutUser(){
+		userLoggedIn = false;
 	}
 
 	public void saveProject(Project project) throws userNotLoggedInException {
@@ -401,7 +420,12 @@ public class ManagementApp {
 		fileReader.saveFileData(jsArray.toString(), "users");
 	}
 
+<<<<<<< HEAD
+	public String printProjectSummary(int ID) {
+		System.out.println(projects.size());
+=======
 	public static String printProjectSummary(int ID) {
+>>>>>>> origin/master
 		Project p = projects.get(ID);
 		String type;
 
@@ -454,6 +478,11 @@ public class ManagementApp {
 
 	public ArrayList<Activity> getActivityArray() {
 		return activities;
+	}
+	
+	public boolean getUserStatus(){
+		return userLoggedIn;
+		
 	}
 
 }
