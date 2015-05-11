@@ -1,3 +1,5 @@
+//These test is made by August Moebius (s144461)
+
 package test;
 
 import static org.junit.Assert.*;
@@ -84,7 +86,6 @@ public void testAddProjectLeaderToProject() throws userNotLoggedInException{
 	Project project = new Project(name,0); 
 	managementApp.logInUser(user.getUserID());
 	managementApp.saveProject(project);
-	managementApp.setSessionUser(user.getUserID());
 	managementApp.addProjectLeader(projectLeader.getUserID(),project.getProjectID());
 	assertEquals("Per", users.get(project.getProjectLeaderId()).getName());	
 }

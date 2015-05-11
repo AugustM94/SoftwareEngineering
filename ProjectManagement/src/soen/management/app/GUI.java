@@ -1,3 +1,5 @@
+//The work with this has been evenly distributed between project members. 
+
 package soen.management.app;
 
 import java.awt.Color;
@@ -111,14 +113,31 @@ public class GUI extends JFrame{
 	}
 	public void setassignProject() {
 		
-		JLabel userHeader = new JLabel("Assign Project or Non-Project-Activity");
-		userHeader.setSize(600,30);
-		userHeader.setLocation(0,0);
-		userHeader.setBackground(new Color(0x0e2f44));
-		userHeader.setForeground(new Color(0xe5e5ff));
-		userHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		userHeader.setOpaque(true);
-		chooseUser.add(userHeader);
+		assignProject.setBackground(new Color(0xe5e5e5));
+		assignProject.setSize(600, 400);
+		assignProject.setLocation(0, 0);
+		assignProject.setLayout(null);
+		assignProject.setVisible(true);
+		
+		JLabel assignProjectHeader = new JLabel("Assign Project or Non-Project-Activity");
+		assignProjectHeader.setSize(600,30);
+		assignProjectHeader.setLocation(0,0);
+		assignProjectHeader.setBackground(new Color(0x0e2f44));
+		assignProjectHeader.setForeground(new Color(0xe5e5ff));
+		assignProjectHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		assignProjectHeader.setOpaque(true);
+		assignProject.add(assignProjectHeader);
+		
+		JLabel backButton = new JLabel("Back");
+		backButton.setSize(100,24);
+		backButton.setBackground(new Color(0x0e2f44));
+		backButton.setForeground(new Color(0xe5e5ff));
+		backButton.setLocation(15, 3);
+		backButton.setHorizontalAlignment(SwingConstants.CENTER);
+		backButton.setOpaque(true);
+		backButton.addMouseListener(new CustomMouseListener("back",chooseUser, assignProject));
+		Project.add(backButton);
+		
 	}
 	
 	public void setProject(){
@@ -320,9 +339,6 @@ public class GUI extends JFrame{
 			activityLabels[i].setOpaque(true);
 			activityLabels[i].addMouseListener(new CustomMouseListener("ShowHideActivity",editActivityP, Activity, activities.get(i)));
 			Activity.add(activityLabels[i]);
-			
-			
-			
 			
 		} 
 		projectOverview.setSize(370,310);
@@ -564,7 +580,6 @@ public class GUI extends JFrame{
 	    		System.out.println(project.getName());
 	    		currentProject = project;
 	    		projectOverview.setText(managementApp.printProjectSummary(currentProject.getProjectID()));
-	    		//projectOverview.setText("Pik er kort");
 	    		viewShow.setVisible(true);
 	    		viewHide.setVisible(false);
 	    		
@@ -628,20 +643,15 @@ public class GUI extends JFrame{
 	    	}
 	    	else if (typeOfListener.equals("editProjectLeader")){
 	    		managementApp.projects.get(currentProject.getProjectID()).setProjectLeaderId(user.getUserID());
-	    		//currentProject.setProjectLeaderId(user.getUserID());
 	    		viewShow.setVisible(true);
 	    		viewHide.setVisible(false);
 	    		managementApp.saveProjects();
 	    		System.out.println(currentProject.getProjectLeaderId());
 	    	}
-//	    	else {
-//	    		viewShow.setVisible(true);
-//	    		viewHide.setVisible(false);
-//	    	}
+
 	    	if(viewShow == Project && currentProject != null){
 	    		
 	    	}
-	    	
 	    	
 	    }
 

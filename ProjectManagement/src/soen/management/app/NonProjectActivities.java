@@ -8,7 +8,7 @@ public class NonProjectActivities {
 	private int timeStamp;
 	private boolean active;
 	
-	
+	//NH
 	public NonProjectActivities(String name){
 		this.name = name;
 		this.NonProjectActivitiesID = 1;

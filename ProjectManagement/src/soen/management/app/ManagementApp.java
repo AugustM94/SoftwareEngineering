@@ -1,3 +1,5 @@
+// August Moebius (s144461) = AM, Niki Jensen (s144216) = NJ, Martin Meincke (s123883) = MM
+
 package soen.management.app;
 
 import java.text.DateFormat;
@@ -9,7 +11,7 @@ import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
+//MM
 public class ManagementApp {
 	static ArrayList<Project> projects = new ArrayList<Project>();
 	static ArrayList<User> users = new ArrayList<User>();
@@ -32,52 +34,15 @@ public class ManagementApp {
 		loadUsers();
 		loadActivities();
 		
-//		System.out.println(getAssignedActivitiesForUser(sessionUser).toString());
-//		registerWorkingHours(0, 5);
-//		registerWorkingHours(0, 10);
-//		System.out.println(activities.get(0).getHoursSpendPerUser().get(1));
-	//	System.out.println(activities.get(0).getHoursSpendPerUser().toString());
-
-		// System.out.println(activities.get(0).getName());
-		// //User new_user = new User("Berit");
-		// //users.add(new_user);
-		//
-		// //adds a new project
-		// //Project new_project = new Project("test",1);
-		// //projects.add(new_project);
-		// System.out.println("Amount of projects: " + projects.size());
-		// System.out.println("Amount of users: " + users.size());
-		// System.out.println(printProjectSummary(0));
-		// System.out.println("Amount of activities: "+ activities.size());
-<<<<<<< Updated upstream
-=======
-
-	//	new GUI();
-
-		//new GUI();
-
->>>>>>> Stashed changes
-
 		new GUI();
 		
-		/*
-		try {
-			System.out.println(dateToUnix("January 2, 2010"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-*/
-		// saveUsers();
-		// saveProjects();
-
 	}
-
+	// AM
 	public static void logInUser(int userID) {
 		userLoggedIn = true;
 		sessionUser = userID;
 	}
-
+	// NJ
 	public void saveProject(Project project) throws userNotLoggedInException {
 		if (userLoggedIn == true) {
 			projects.add(project);
@@ -88,19 +53,19 @@ public class ManagementApp {
 		}
 
 	}
-
+	//MM
 	public static String unixToDate(int unixTime) {
 		Date time=new Date((long)unixTime*1000);
 		SimpleDateFormat ft = new SimpleDateFormat("dd. MMMM yyyy 'kl 'HH:mm");
 		return ft.format(time);
 	}
-	
+	//MM
 	public static int dateToUnix(String dateTime) throws ParseException{
 		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
 		Date date = format.parse(dateTime);
 		return (int) (date.getTime()/1000);
 	}
-	
+	//MM
 	public static int identifierGenerator(int projectId) throws ParseException{
 		Date date = new Date();
 		long year = date.getTime();
@@ -109,7 +74,7 @@ public class ManagementApp {
 		return Integer.parseInt( ft.format(year));
 	}
 	
-	
+	//AM
 	public void addProjectLeader(int userID, int projectID)
 			throws userNotLoggedInException {
 		if (userLoggedIn == true) {
@@ -120,7 +85,7 @@ public class ManagementApp {
 		}
 
 	}
-
+	//NJ
 	public static void registerWorkingHours(int activityID, int hours)
 			throws userNotLoggedInException {
 		if (userLoggedIn == true) {
@@ -130,12 +95,12 @@ public class ManagementApp {
 					"You are not logged in, please select a user.");
 		}
 	}
-	
+	//AM
 	public static void assingUserToActivity(int activityID, int userID){
 		activities.get(activityID).setNewAssignedUsers(userID);
 		
 	}
-
+	//MM
 	public static ArrayList<Integer> getProjectLeaderProjects(int userID){
 		ArrayList<Integer> projectLeaderProjects = new ArrayList<Integer>();
 		for (int i = 0; i < projects.size(); i++){
@@ -146,7 +111,7 @@ public class ManagementApp {
 		
 		return projectLeaderProjects;
 	}
-	
+	//NJ
 	public static int getTotalHoursSpentForProject(int projectID){
 		int total = 0;
 		ArrayList<Integer> a = getActivitiesForProject(projectID);
@@ -157,7 +122,7 @@ public class ManagementApp {
 		return total;
 		
 	}
-	
+	//NJ
 	public static int getTotalHoursBudgetForProject(int projectID){
 		int total = 0;
 		ArrayList<Integer> a = getActivitiesForProject(projectID);
@@ -168,7 +133,7 @@ public class ManagementApp {
 		return total;
 		
 	}
-	
+	//MM
 	public static ArrayList<Integer> getActivitiesForProject(int projectID){
 		ArrayList<Integer> returnArray = new ArrayList<Integer>();
 		for (int i = 0; i < activities.size(); i++) {
@@ -178,7 +143,7 @@ public class ManagementApp {
 		}
 		return returnArray;
 	}
-	
+	//MM
 	//Return the IDs of activites which a user is assigned. 
 	public static ArrayList<Integer> getAssignedActivitiesForUser(int user)
 			throws userNotLoggedInException {
@@ -195,7 +160,7 @@ public class ManagementApp {
 		}
 		return returnArray;
 	}
-
+	//AM
 	public static void loadActivities() throws NumberFormatException {
 		String jsonString = fileReader.getFileData("activities");
 		JSONArray jsonArray = new JSONArray(jsonString);
@@ -284,7 +249,7 @@ public class ManagementApp {
 			activities.add(activityElement);
 		}
 	}
-
+	//MM
 	public static void loadUsers() throws NumberFormatException {
 		String jsonString = fileReader.getFileData("users");
 		JSONArray jsonArray = new JSONArray(jsonString);
@@ -332,7 +297,7 @@ public class ManagementApp {
 			users.add(userElement);
 		}
 	}
-
+	//NJ
 	public static void loadProjects() throws NumberFormatException {
 		String jsonString = fileReader.getFileData("projects");
 		JSONArray jsonArray = new JSONArray(jsonString);
@@ -383,31 +348,31 @@ public class ManagementApp {
 		}
 		System.out.println("finished loading projects");
 	}
-
+	//NJ
 	public static void saveActivities() {
 		JSONArray jsArray = new JSONArray(activities.toArray());
 
 		fileReader.saveFileData(jsArray.toString(), "activities");
 	}
-
+	//NJ
 	public static void saveProjects() {
 		JSONArray jsArray = new JSONArray(projects.toArray());
 
 		fileReader.saveFileData(jsArray.toString(), "projects");
 	}
-
+	//NJ
 	public static void saveUsers() {
 		JSONArray jsArray = new JSONArray(users.toArray());
 
 		fileReader.saveFileData(jsArray.toString(), "users");
 	}
 
-<<<<<<< HEAD
-	public String printProjectSummary(int ID) {
-		System.out.println(projects.size());
-=======
+
+//	public String printProjectSummary(int ID) {
+//		System.out.println(projects.size());
+	//AM
 	public static String printProjectSummary(int ID) {
->>>>>>> origin/master
+
 		Project p = projects.get(ID);
 		String type;
 
@@ -426,7 +391,7 @@ public class ManagementApp {
 
 		return s;
 	}
-	
+	//MM
 	public static String getProjectLeaderName(int projectID){
 		String s = "No project leader assigned";
 		int projectLeader = projects.get(projectID).getProjectLeaderId();
@@ -436,28 +401,25 @@ public class ManagementApp {
 		
 		return s;
 	}
-
+	//AM
 	public int nextUserID() {
 		return users.size();
 	}
-
+	//MM
 	public ArrayList<User> getUserArray() {
 		// TODO Auto-generated method stub
 		return users;
 	}
-
+	//AM
 	public int getSessionUser() {
 		return sessionUser;
 	}
 
-//	public void setSessionUser(int sessionUser) {
-//		this.sessionUser = sessionUser;
-//	}
-
+	//NH
 	public ArrayList<Project> getProjectArray() {
 		return projects;
 	}
-
+	//NH
 	public ArrayList<Activity> getActivityArray() {
 		return activities;
 	}

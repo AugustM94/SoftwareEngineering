@@ -1,3 +1,5 @@
+//This test is made by Martin Meincke (s123883)
+
 package test;
 
 import static org.junit.Assert.assertEquals;
