@@ -11,12 +11,14 @@ import org.junit.Test;
 import soen.management.app.Activity;
 import soen.management.app.ManagementApp;
 import soen.management.app.Project;
+import soen.management.app.User;
 import soen.management.app.userNotLoggedInException;
 
 public class testRegisterWorkingHours {
 	private static ManagementApp managementApp = new ManagementApp();
-	private static ArrayList<Activity> activities = managementApp
-			.getActivityArray();
+	private static ArrayList<Activity> activities;
+	private static ArrayList<User> users = managementApp
+			.getUserArray();
 
 	// Use case 4 test: Registering hours.
 
@@ -25,6 +27,8 @@ public class testRegisterWorkingHours {
 	@Test(expected = userNotLoggedInException.class)
 	public void testUserNotLoggedInGetAssignedActivties()
 			throws userNotLoggedInException {
+		activities = managementApp.getActivityArray();
+		managementApp.logOutUser();
 		managementApp.getAssignedActivitiesForUser(0); // Attempts to get a list
 														// of activities for
 														// user
@@ -36,6 +40,7 @@ public class testRegisterWorkingHours {
 	@Test(expected = userNotLoggedInException.class)
 	public void testUserNotLoggedInExceptionRegisterHours()
 			throws userNotLoggedInException {
+		managementApp.logOutUser();
 		managementApp.registerWorkingHours(0, 1); // Attempts to register 1 hour
 													// to activity with ID no.
 													// 0. s
@@ -48,6 +53,7 @@ public class testRegisterWorkingHours {
 	@Test
 	public void testGetAssignedActivitiesForUser()
 			throws userNotLoggedInException {
+		activities = managementApp.getActivityArray();
 		// Logins user
 		managementApp.logInUser(0);
 		// Creates some activities for user to be assigned to.
@@ -67,7 +73,7 @@ public class testRegisterWorkingHours {
 				.toString());
 	}
 
-	// Test registering hours with user logged in. 
+	// Test registering hours with assigned user and not assigned user. 
 	@Test
 	public void testRegisterHours() throws userNotLoggedInException {
 		// a) Login user with ID no. 0.
@@ -75,12 +81,26 @@ public class testRegisterWorkingHours {
 		// c) Adds new activity to list of activities.
 		// d) Register 5 hours for session user. In this case user with ID no.
 		// 0.
-
+		activities = managementApp.getActivityArray();
 		managementApp.logInUser(0);	
 		Activity activity1 = new Activity("Activity 1", 0);
 		activities.add(activity1);
+		System.out.println(activities.size());
 		managementApp.registerWorkingHours(0, 5);
 		assertTrue(activity1.getHoursSpendPerUser().get(0)==5);
+		System.out.println(activity1.getHoursSpendPerUser());
+		
+		//Test for no user logged in. Tests if user is added to assigned users and hours registered. 
+		// a) Login user with ID 1.
+		// b) Register 10 hours for this user.
+		// c) Tests if 10 hours is added.
+		// d) Tests if list of assigned users contains the new user. 
+		
+		managementApp.logInUser(1);
+		managementApp.registerWorkingHours(0, 10);
+		assertTrue(activity1.getHoursSpendPerUser().get(1)==10);
+		assertTrue(activity1.getAssignedUsers().contains(1));
 	}
+	
 
 }

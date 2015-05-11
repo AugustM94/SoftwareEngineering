@@ -10,6 +10,8 @@ import java.util.Locale;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+//Methods used only in GUI is marked with comment //GUIONLY and is not included in code coverage. 
+
 public class ManagementApp {
 	static ArrayList<Project> projects = new ArrayList<Project>();
 	static ArrayList<User> users = new ArrayList<User>();
@@ -17,15 +19,8 @@ public class ManagementApp {
 	static FileReader fileReader = new FileReader();
 	private static boolean userLoggedIn = false;
 	static int sessionUser = 0;
-	static int currentProject = 0;
 
-	public static int getCurrentProject() {
-		return currentProject;
-	}
 
-	public static void setCurrentProject(int currentProject) {
-		ManagementApp.currentProject = currentProject;
-	}
 
 	public static void main(String[] args) throws userNotLoggedInException {
 		loadProjects();
@@ -66,16 +61,10 @@ public class ManagementApp {
 		// System.out.println("Amount of users: " + users.size());
 		// System.out.println(printProjectSummary(0));
 		// System.out.println("Amount of activities: "+ activities.size());
-<<<<<<< Updated upstream
-=======
 
-	//	new GUI();
+
 
 		//new GUI();
-
->>>>>>> Stashed changes
-
-		new GUI();
 		
 		/*
 		try {
@@ -93,6 +82,10 @@ public class ManagementApp {
 	public static void logInUser(int userID) {
 		userLoggedIn = true;
 		sessionUser = userID;
+	}
+	
+	public static void logOutUser(){
+		userLoggedIn = false;
 	}
 
 	public void saveProject(Project project) throws userNotLoggedInException {
@@ -472,6 +465,11 @@ public class ManagementApp {
 
 	public ArrayList<Activity> getActivityArray() {
 		return activities;
+	}
+	
+	public boolean getUserStatus(){
+		return userLoggedIn;
+		
 	}
 
 }
