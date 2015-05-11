@@ -1,9 +1,1 @@
-<<<<<<< HEAD
-[{"timeStamp":34567812,"projectLeaderId":1,"endDate":23456781,"name":"project 1","projectType":0,"active":false,"projectID":0,"startDate":12345890},{"timeStamp":34789012,"projectLeaderId":2,"endDate":23458901,"name":"project 2","projectType":1,"active":true,"projectID":1,"startDate":12345890},{"timeStamp":1429568045,"projectLeaderId":0,"endDate":0,"name":"test project","projectType":1,"active":false,"projectID":2,"startDate":0},{"timeStamp":1431287447,"projectLeaderId":-1,"endDate":0,"name":"edwe","projectType":0,"active":false,"projectID":3,"startDate":0}]
-=======
-<<<<<<< HEAD
-[{"timeStamp":34567812,"projectLeaderId":1,"endDate":23456781,"name":"project 1","projectType":0,"active":false,"projectID":0,"startDate":12345890},{"timeStamp":34789012,"projectLeaderId":2,"endDate":23458901,"name":"project 2","projectType":1,"active":true,"projectID":1,"startDate":12345890},{"timeStamp":1429568045,"projectLeaderId":0,"endDate":0,"name":"test project","projectType":1,"active":false,"projectID":2,"startDate":0},{"timeStamp":1431287447,"projectLeaderId":-1,"endDate":0,"name":"edwe","projectType":0,"active":false,"projectID":3,"startDate":0}]
-=======
 [{"timeStamp":1431310269,"projectLeaderId":1,"endDate":0,"name":"Niki","projectType":0,"active":false,"projectID":0,"startDate":0},{"timeStamp":1431313188,"projectLeaderId":-1,"endDate":0,"name":"John","projectType":0,"active":false,"projectID":1,"startDate":0}]
->>>>>>> origin/master
->>>>>>> origin/master

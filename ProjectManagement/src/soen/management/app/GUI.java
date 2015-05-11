@@ -101,7 +101,6 @@ public class GUI extends JFrame{
 	}
 	
 	public void setProject(){
-		
 		ArrayList<Project> projects = managementApp.getProjectArray();
 		
 		Project.setBackground(new Color(0xe5e5e5));
