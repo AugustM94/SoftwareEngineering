@@ -11,7 +11,13 @@ import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+<<<<<<< HEAD
 //MM
+=======
+
+//Methods used only in GUI is marked with comment //GUIONLY and is not included in code coverage. 
+
+>>>>>>> origin/master
 public class ManagementApp {
 	static ArrayList<Project> projects = new ArrayList<Project>();
 	static ArrayList<User> users = new ArrayList<User>();
@@ -19,30 +25,33 @@ public class ManagementApp {
 	static FileReader fileReader = new FileReader();
 	private static boolean userLoggedIn = false;
 	static int sessionUser = 0;
-	static int currentProject = 0;
-
-	public static int getCurrentProject() {
-		return currentProject;
-	}
-
-	public static void setCurrentProject(int currentProject) {
-		ManagementApp.currentProject = currentProject;
-	}
 
 	public static void main(String[] args) throws userNotLoggedInException {
 		loadProjects();
 		loadUsers();
 		loadActivities();
+<<<<<<< HEAD
 		
 		new GUI();
 		
+=======
+		new GUI();
+>>>>>>> origin/master
 	}
 	// AM
 	public static void logInUser(int userID) {
 		userLoggedIn = true;
 		sessionUser = userID;
 	}
+<<<<<<< HEAD
 	// NJ
+=======
+	
+	public static void logOutUser(){
+		userLoggedIn = false;
+	}
+
+>>>>>>> origin/master
 	public void saveProject(Project project) throws userNotLoggedInException {
 		if (userLoggedIn == true) {
 			projects.add(project);
@@ -65,13 +74,18 @@ public class ManagementApp {
 		Date date = format.parse(dateTime);
 		return (int) (date.getTime()/1000);
 	}
+<<<<<<< HEAD
 	//MM
 	public static int identifierGenerator(int projectId) throws ParseException{
+=======
+	
+	public static int projectNumberGenerator(int projectId) throws ParseException{
+>>>>>>> origin/master
 		Date date = new Date();
 		long year = date.getTime();
 		SimpleDateFormat ft = new SimpleDateFormat("yy");
 		
-		return Integer.parseInt( ft.format(year));
+		return Integer.parseInt( ft.format(year) + ""+projectId);
 	}
 	
 	//AM
@@ -367,12 +381,16 @@ public class ManagementApp {
 		fileReader.saveFileData(jsArray.toString(), "users");
 	}
 
+<<<<<<< HEAD
 
 //	public String printProjectSummary(int ID) {
 //		System.out.println(projects.size());
 	//AM
 	public static String printProjectSummary(int ID) {
 
+=======
+	public static String printProjectSummary(int ID) {
+>>>>>>> origin/master
 		Project p = projects.get(ID);
 		String type;
 
@@ -391,7 +409,20 @@ public class ManagementApp {
 
 		return s;
 	}
+<<<<<<< HEAD
 	//MM
+=======
+	
+	public static String printActivitySummary(int ID){
+		Activity a = activities.get(ID);
+		
+		String s = "Activity summary:" + "\n" + "Name: " + a.getName() + "\n"
+				+ "Assigned users: " + a.getAssignedUsers() + "\n";
+
+		return s;
+	}
+	
+>>>>>>> origin/master
 	public static String getProjectLeaderName(int projectID){
 		String s = "No project leader assigned";
 		int projectLeader = projects.get(projectID).getProjectLeaderId();
@@ -407,7 +438,6 @@ public class ManagementApp {
 	}
 	//MM
 	public ArrayList<User> getUserArray() {
-		// TODO Auto-generated method stub
 		return users;
 	}
 	//AM
@@ -415,13 +445,21 @@ public class ManagementApp {
 		return sessionUser;
 	}
 
+<<<<<<< HEAD
 	//NH
+=======
+>>>>>>> origin/master
 	public ArrayList<Project> getProjectArray() {
 		return projects;
 	}
 	//NH
 	public ArrayList<Activity> getActivityArray() {
 		return activities;
+	}
+	
+	public boolean getUserStatus(){
+		return userLoggedIn;
+		
 	}
 
 }

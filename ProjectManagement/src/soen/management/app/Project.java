@@ -20,9 +20,7 @@ public class Project {
 		this.projectLeaderId = -1;
 	}
 	
-	public void activateProject(int projectID){
-		
-	}
+
 	
 
 //Get setters

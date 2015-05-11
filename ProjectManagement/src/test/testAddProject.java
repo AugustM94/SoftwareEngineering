@@ -26,7 +26,7 @@ public class testAddProject {
 //Tests if the exception is thrown if no user is logged in while attempting to save project.
 @Test(expected = userNotLoggedInException.class)
 public void testUserNotLoggedInExceptionAddProject() throws userNotLoggedInException{
-	Project project = new Project(name,0);
+	Project project = new Project(name,0); 
 	managementApp.saveProject(project);
 }
 	
@@ -61,7 +61,7 @@ public void testAddProject() throws userNotLoggedInException{
 
 //Test use case 2: Adding a project leader to e
 
-//Test if you the exception is thrown if no user is logged in while attempting to save project.
+//Test if you the exception is thrown if no user is logged in while attempting to add a project leader.
 @Test(expected = userNotLoggedInException.class)
 public void testUserNotLoggedInExceptionAddProjectLeader() throws userNotLoggedInException{
 	user = new User("Henrik");
@@ -69,6 +69,18 @@ public void testUserNotLoggedInExceptionAddProjectLeader() throws userNotLoggedI
 	Project project = new Project(name,0);
 	managementApp.addProjectLeader(projectLeader.getUserID(),project.getProjectID());
 }
+
+//Test if you the exception is thrown if no user is logged in while attempting to save project to array.
+@Test(expected = userNotLoggedInException.class)
+public void testUserNotLoggedInExceptionSaveProject() throws userNotLoggedInException{
+	managementApp.logOutUser();
+	assertEquals(managementApp.getUserStatus(), false);
+	Project project = new Project(name,0);
+	managementApp.saveProject(project);
+	assertFalse(projects.contains(project));
+
+}
+
 
 //Test for adding project leader. 
 // a) Create project
@@ -86,8 +98,21 @@ public void testAddProjectLeaderToProject() throws userNotLoggedInException{
 	Project project = new Project(name,0); 
 	managementApp.logInUser(user.getUserID());
 	managementApp.saveProject(project);
+<<<<<<< HEAD
+=======
+	managementApp.logInUser(user.getUserID());
+>>>>>>> origin/master
 	managementApp.addProjectLeader(projectLeader.getUserID(),project.getProjectID());
 	assertEquals("Per", users.get(project.getProjectLeaderId()).getName());	
+}
+
+
+@Test
+public void testSaveProjectToArray() throws userNotLoggedInException{
+	managementApp.logInUser(0);
+	Project project = new Project(name,0); 
+	managementApp.saveProject(project);
+	assertTrue(projects.contains(project));
 }
 	
 }
