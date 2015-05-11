@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 [{"startDate":0,"projectID":0,"projectLeaderId":1,"timeStamp":1431310269,"name":"Niki","active":false,"endDate":0,"projectType":0},{"startDate":0,"projectID":1,"projectLeaderId":1,"timeStamp":1431313188,"name":"John","active":false,"endDate":0,"projectType":0}]
+=======
+[{"timeStamp":1431310269,"projectLeaderId":0,"endDate":0,"name":"Niki","projectType":0,"active":false,"projectID":0,"startDate":0},{"timeStamp":1431313188,"projectLeaderId":1,"endDate":0,"name":"John","projectType":0,"active":false,"projectID":1,"startDate":0},{"timeStamp":1431315853,"projectLeaderId":-1,"endDate":0,"name":"project 3","projectType":1,"active":false,"projectID":2,"startDate":0}]
+>>>>>>> origin/master

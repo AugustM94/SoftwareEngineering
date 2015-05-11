@@ -9,9 +9,10 @@ import java.io.IOException;
  
 
 public class FileReader {
+	//MM
     public String getFileData(String filename){
     	String line;
-        StringBuilder everything = new StringBuilder();
+        StringBuilder everything = new StringBuilder(); 
         
         File file = new File("src/"+filename+".json");
 
@@ -42,10 +43,9 @@ public class FileReader {
         
     	return everything.toString();
     }
+    //AM
     public void saveFileData(String content, String filename){
 		try {
-			 
- 
 			File file = new File("src/"+filename+".json");
  
 			// if file doesnt exists, then create it

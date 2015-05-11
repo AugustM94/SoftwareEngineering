@@ -8,6 +8,7 @@ public class User {
 	private ArrayList<Integer> projectID; //Projects of the user
 	static ManagementApp managementApp = new ManagementApp();
 	
+	//AM
 	public User(String name){
 		this.name = name;
 		this.projectID = new ArrayList<Integer>();
@@ -41,14 +42,5 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-//	public String printUserID(){
-//		Integer id = userID;
-//		String format = "%07d";
-//		String result = String.format(format,id); //Adds zeros in front of string.
-//		return result;
-//	}
-
 
 }
