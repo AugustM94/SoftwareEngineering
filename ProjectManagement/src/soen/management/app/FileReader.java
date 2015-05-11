@@ -44,8 +44,6 @@ public class FileReader {
     }
     public void saveFileData(String content, String filename){
 		try {
-			 
- 
 			File file = new File("src/"+filename+".json");
  
 			// if file doesnt exists, then create it

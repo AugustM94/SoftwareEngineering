@@ -24,77 +24,7 @@ public class ManagementApp {
 		loadProjects();
 		loadUsers();
 		loadActivities();
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
->>>>>>> origin/master
->>>>>>> origin/master
-		
-		logInUser(1);
-		System.out.println(activities.size());
-		System.out.println(activities.get(0).getActivityID());
-//		assingUserToActivity(0, 1);
-		System.out.println(activities.get(0).getAssignedUsers());
-		registerWorkingHours(0, 5);
-		System.out.println(activities.get(0).getHoursSpendPerUser());
-		System.out.println(printProjectSummary(0));
-		
-		try {
-<<<<<<< HEAD
-			System.out.println("loebenummer: " + identifierGenerator(10));
-=======
-			System.out.println("loebenummer: " + projectNumberGenerator(10));
->>>>>>> origin/master
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-<<<<<<< HEAD
-
 		new GUI();
-=======
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/master
->>>>>>> origin/master
-		
->>>>>>> origin/master
-//		System.out.println(getAssignedActivitiesForUser(sessionUser).toString());
-//		registerWorkingHours(0, 5);
-//		registerWorkingHours(0, 10);
-//		System.out.println(activities.get(0).getHoursSpendPerUser().get(1));
-	//	System.out.println(activities.get(0).getHoursSpendPerUser().toString());
-
-		// System.out.println(activities.get(0).getName());
-		// //User new_user = new User("Berit");
-		// //users.add(new_user);
-		//
-		// //adds a new project
-		// //Project new_project = new Project("test",1);
-		// //projects.add(new_project);
-		// System.out.println("Amount of projects: " + projects.size());
-		// System.out.println("Amount of users: " + users.size());
-		// System.out.println(printProjectSummary(0));
-		// System.out.println("Amount of activities: "+ activities.size());
-
-
-		
-		
-		/*
-		try {
-			System.out.println(dateToUnix("January 2, 2010"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-*/
-		// saveUsers();
-		// saveProjects();
-
 	}
 
 	public static void logInUser(int userID) {
@@ -431,10 +361,6 @@ public class ManagementApp {
 	}
 
 	public static String printProjectSummary(int ID) {
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 		Project p = projects.get(ID);
 		String type;
 
@@ -454,6 +380,15 @@ public class ManagementApp {
 		return s;
 	}
 	
+	public static String printActivitySummary(int ID){
+		Activity a = activities.get(ID);
+		
+		String s = "Activity summary:" + "\n" + "Name: " + a.getName() + "\n"
+				+ "Assigned users: " + a.getAssignedUsers() + "\n";
+
+		return s;
+	}
+	
 	public static String getProjectLeaderName(int projectID){
 		String s = "No project leader assigned";
 		int projectLeader = projects.get(projectID).getProjectLeaderId();
@@ -469,17 +404,12 @@ public class ManagementApp {
 	}
 
 	public ArrayList<User> getUserArray() {
-		// TODO Auto-generated method stub
 		return users;
 	}
 
 	public int getSessionUser() {
 		return sessionUser;
 	}
-
-//	public void setSessionUser(int sessionUser) {
-//		this.sessionUser = sessionUser;
-//	}
 
 	public ArrayList<Project> getProjectArray() {
 		return projects;
