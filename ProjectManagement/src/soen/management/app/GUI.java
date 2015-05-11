@@ -20,15 +20,14 @@ public class GUI extends JFrame{
 	
 	private ManagementApp managementApp = new ManagementApp();
 	JPanel chooseUser = new JPanel();
+	JPanel assignProject = new JPanel();
 	JPanel Project = new JPanel();
 	JPanel Activity = new JPanel();
-
 	JPanel addActivityP = new JPanel();
 	JPanel addprojectLeader = new JPanel();
-	
-	static Project currentProject = null;
-	
 	JPanel editActivityP = new JPanel();
+	static Project currentProject = null;
+	static Activity currentActivity = null;
 
 	JTextField projectProjectName = new JTextField(20);
 	JTextField projectStartDate = new JTextField(20);
@@ -37,6 +36,15 @@ public class GUI extends JFrame{
 	JTextField projectProjectType = new JTextField(20);
 	JCheckBox projectActive = new JCheckBox("");
 	JLabel projectSubmit = new JLabel("Submit");
+	
+	JTextField activityActivityName = new JTextField(20);
+	JTextField activityStartDate = new JTextField(20);
+	JTextField activityEndDate = new JTextField(20);
+	JTextField activityHoursBudgetted = new JTextField(20);
+	JCheckBox activityActive = new JCheckBox("");
+	JLabel activitySubmit = new JLabel("Submit");
+	
+	JTextArea projectOverview = new JTextArea();
 	
 	CustomMouseListener customMouseListener = null;
 	
@@ -50,19 +58,21 @@ public class GUI extends JFrame{
 	    setLayout(null);
 	    Container con = this.getContentPane(); 
 	    setchooseUser();
+	    setassignProject();
 	    setProject();
 	    setActivity();
 	    setaddActivityP();
 	    setaddprojectLeader();
 	    setaddActivityP();
-	    //seteditActivityP();
 
 	    con.add(chooseUser);
+	    con.add(assignProject);
 	    con.add(Project);
 	    con.add(Activity);
 	    con.add(addActivityP);
 	    con.add(addprojectLeader);
-	    con.add(editActivityP);
+	    
+
 
 	    
 	    setVisible(true); // make frame visible
@@ -95,9 +105,20 @@ public class GUI extends JFrame{
 			userLabels[i].setBackground(new Color(0x8697a1));
 			userLabels[i].setHorizontalAlignment(SwingConstants.CENTER);
 			userLabels[i].setOpaque(true);
-			userLabels[i].addMouseListener(new CustomMouseListener(Project, chooseUser, users.get(i)));
+			userLabels[i].addMouseListener(new CustomMouseListener("showUsers",Project, chooseUser, users.get(i)));
 			chooseUser.add(userLabels[i]);
 		}
+	}
+	public void setassignProject() {
+		
+		JLabel userHeader = new JLabel("Assign Project or Non-Project-Activity");
+		userHeader.setSize(600,30);
+		userHeader.setLocation(0,0);
+		userHeader.setBackground(new Color(0x0e2f44));
+		userHeader.setForeground(new Color(0xe5e5ff));
+		userHeader.setHorizontalAlignment(SwingConstants.CENTER);
+		userHeader.setOpaque(true);
+		chooseUser.add(userHeader);
 	}
 	
 	public void setProject(){
@@ -116,7 +137,7 @@ public class GUI extends JFrame{
 		backButton.setLocation(15, 3);
 		backButton.setHorizontalAlignment(SwingConstants.CENTER);
 		backButton.setOpaque(true);
-		backButton.addMouseListener(new CustomMouseListener(chooseUser, Project));
+		backButton.addMouseListener(new CustomMouseListener("back",chooseUser, Project));
 		Project.add(backButton);
 		
 		JLabel projectHeader = new JLabel("Select a project");
@@ -136,7 +157,7 @@ public class GUI extends JFrame{
 			projectLabels[i].setBackground(new Color(0x8697a1));
 			projectLabels[i].setHorizontalAlignment(SwingConstants.CENTER);
 			projectLabels[i].setOpaque(true);
-			projectLabels[i].addMouseListener(new CustomMouseListener(Activity, Project, projects.get(i)));
+			projectLabels[i].addMouseListener(new CustomMouseListener("showProjects",Activity, Project, projects.get(i)));
 			
 			Project.add(projectLabels[i]);
 		}
@@ -149,7 +170,7 @@ public class GUI extends JFrame{
 		textarea.setOpaque(true);
 		Project.add(textarea);
 		
-		JLabel projectNameLabel = new JLabel("Project Name:");
+		JLabel projectNameLabel = new JLabel("Name:");
 		projectNameLabel.setSize(100,30);
 		projectNameLabel.setLocation(180,70);
 		projectNameLabel.setBackground(new Color(0xe5e5e5));
@@ -227,16 +248,16 @@ public class GUI extends JFrame{
 		Project.add(projectActive);
 		
 		
-		JLabel submit = new JLabel("Submit");
-		submit.setSize(100,30);
-		submit.setLocation(460,270);
-		submit.setBackground(new Color(0x0e2f44));
-		submit.setForeground(new Color(0xe5e5ff));
-		submit.setHorizontalAlignment(SwingConstants.CENTER);
-		submit.setOpaque(true);
-		customMouseListener = new CustomMouseListener();
-		submit.addMouseListener(customMouseListener);
-		Project.add(submit);
+		
+		projectSubmit.setSize(100,30);
+		projectSubmit.setLocation(460,270);
+		projectSubmit.setBackground(new Color(0x0e2f44));
+		projectSubmit.setForeground(new Color(0xe5e5ff));
+		projectSubmit.setHorizontalAlignment(SwingConstants.CENTER);
+		projectSubmit.setOpaque(true);
+		customMouseListener = new CustomMouseListener("addProjectSubmit",chooseUser,Project);
+		projectSubmit.addMouseListener(customMouseListener);
+		Project.add(projectSubmit);
 
 	}
 
@@ -256,10 +277,10 @@ public class GUI extends JFrame{
 		backButton.setLocation(15, 3);
 		backButton.setHorizontalAlignment(SwingConstants.CENTER);
 		backButton.setOpaque(true);
-		backButton.addMouseListener(new CustomMouseListener(Project, Activity));
+		backButton.addMouseListener(new CustomMouseListener("back",Project, Activity));
 		Activity.add(backButton);
 		
-		JLabel projectHeader = new JLabel("Select an activity");
+		JLabel projectHeader = new JLabel("Manage Project");
 		projectHeader.setSize(600,30);
 		projectHeader.setLocation(0,0);
 		projectHeader.setBackground(new Color(0x0e2f44));
@@ -275,7 +296,7 @@ public class GUI extends JFrame{
 		addActivity.setForeground(new Color(0xe5e5ff));
 		addActivity.setHorizontalAlignment(SwingConstants.CENTER);
 		addActivity.setOpaque(true);
-		addActivity.addMouseListener(new CustomMouseListener(addActivityP, Activity));
+		addActivity.addMouseListener(new CustomMouseListener("back",addActivityP, Activity));
 		Activity.add(addActivity);
 		
 		JLabel addProjectLeader = new JLabel("Add Project leader");
@@ -285,7 +306,7 @@ public class GUI extends JFrame{
 		addProjectLeader.setForeground(new Color(0xe5e5ff));
 		addProjectLeader.setHorizontalAlignment(SwingConstants.CENTER);
 		addProjectLeader.setOpaque(true);
-		addProjectLeader.addMouseListener(new CustomMouseListener(addprojectLeader, Activity));
+		addProjectLeader.addMouseListener(new CustomMouseListener("back",addprojectLeader, Activity));
 		Activity.add(addProjectLeader);
 		
 		JLabel[] activityLabels = new JLabel[activities.size()];
@@ -296,20 +317,21 @@ public class GUI extends JFrame{
 			activityLabels[i].setBackground(new Color(0x8697a1));
 			activityLabels[i].setHorizontalAlignment(SwingConstants.CENTER);
 			activityLabels[i].setOpaque(true);
-			activityLabels[i].addMouseListener(new CustomMouseListener(editActivityP, Activity, activities.get(i)));
+			activityLabels[i].addMouseListener(new CustomMouseListener("ShowHideActivity",editActivityP, Activity, activities.get(i)));
 			Activity.add(activityLabels[i]);
 			
 			
-			JTextArea projectOverview = new JTextArea();
-			projectOverview.setSize(370,310);
-			projectOverview.setLocation(200,40);
-			projectOverview.setBackground(new Color(0xe5e5e5));
-			projectOverview.setOpaque(true);
-			String s = managementApp.printProjectSummary(0);
-			projectOverview.setText(s);
-			Activity.add(projectOverview);
+			
+			
 		} 
-		
+		projectOverview.setSize(370,310);
+		projectOverview.setLocation(200,40);
+		projectOverview.setBackground(new Color(0xe5e5e5));
+		projectOverview.setOpaque(true);
+		String s = managementApp.printProjectSummary(0);
+		projectOverview.setText(s);
+		System.out.println(s);
+		Activity.add(projectOverview);
 	}
 	
 	public void setaddActivityP(){
@@ -327,8 +349,7 @@ public class GUI extends JFrame{
 		backButton.setLocation(15, 3);
 		backButton.setHorizontalAlignment(SwingConstants.CENTER);
 		backButton.setOpaque(true);
-
-		backButton.addMouseListener(new CustomMouseListener(Activity, addActivityP));
+		backButton.addMouseListener(new CustomMouseListener("back",Activity, addActivityP));
 		addActivityP.add(backButton);
 		
 		JLabel addActivityHeader = new JLabel("Add Activity to Project");
@@ -347,11 +368,11 @@ public class GUI extends JFrame{
 		activityNameLabel.setOpaque(true);
 		addActivityP.add(activityNameLabel);
 		
-		JTextField activityName = new JTextField(20);
-		activityName.setSize(150,30);
-		activityName.setLocation(150,70);
-		activityName.setOpaque(true);
-		addActivityP.add(activityName);
+		
+		activityActivityName.setSize(150,30);
+		activityActivityName.setLocation(150,70);
+		activityActivityName.setOpaque(true);
+		addActivityP.add(activityActivityName);
 		
 		JLabel startDateLabel = new JLabel("Start Date:");
 		startDateLabel.setSize(100,30);
@@ -360,11 +381,10 @@ public class GUI extends JFrame{
 		startDateLabel.setOpaque(true);
 		addActivityP.add(startDateLabel);
 		
-		JTextField startDate = new JTextField(20);
-		startDate.setSize(150,30);
-		startDate.setLocation(150,110);
-		startDate.setOpaque(true);
-		addActivityP.add(startDate);
+		activityStartDate.setSize(150,30);
+		activityStartDate.setLocation(150,110);
+		activityStartDate.setOpaque(true);
+		addActivityP.add(activityStartDate);
 		
 		JLabel endDateLabel = new JLabel("End Date:");
 		endDateLabel.setSize(100,30);
@@ -373,11 +393,11 @@ public class GUI extends JFrame{
 		endDateLabel.setOpaque(true);
 		addActivityP.add(endDateLabel);
 		
-		JTextField endDate = new JTextField(20);
-		endDate.setSize(150,30);
-		endDate.setLocation(150,150);
-		endDate.setOpaque(true);
-		addActivityP.add(endDate);
+		
+		activityEndDate.setSize(150,30);
+		activityEndDate.setLocation(150,150);
+		activityEndDate.setOpaque(true);
+		addActivityP.add(activityEndDate);
 		
 		JLabel hoursBudgettedLabel = new JLabel("Hours Budgetted:");
 		hoursBudgettedLabel.setSize(100,30);
@@ -386,11 +406,11 @@ public class GUI extends JFrame{
 		hoursBudgettedLabel.setOpaque(true);
 		addActivityP.add(hoursBudgettedLabel);
 		
-		JTextField hoursBudgetted = new JTextField(20);
-		hoursBudgetted.setSize(150,30);
-		hoursBudgetted.setLocation(150,190);
-		hoursBudgetted.setOpaque(true);
-		addActivityP.add(hoursBudgetted);
+		
+		activityHoursBudgetted.setSize(150,30);
+		activityHoursBudgetted.setLocation(150,190);
+		activityHoursBudgetted.setOpaque(true);
+		addActivityP.add(activityHoursBudgetted);
 		
 		JLabel activeLabel = new JLabel("Active:");
 		activeLabel.setSize(100,30);
@@ -399,22 +419,20 @@ public class GUI extends JFrame{
 		activeLabel.setOpaque(true);
 		addActivityP.add(activeLabel);
 
-		JCheckBox active = new JCheckBox("");
-		active.setSize(150,30);
-		active.setLocation(150,230);
-		active.setOpaque(true);
-		addActivityP.add(active);
+		activityActive.setSize(150,30);
+		activityActive.setLocation(150,230);
+		activityActive.setOpaque(true);
+		addActivityP.add(activityActive);
 
-		
-		
-		JLabel submitButton = new JLabel("Submit");
-		submitButton.setSize(100,30);
-		submitButton.setLocation(310,230);
-		submitButton.setBackground(new Color(0x0e2f44));
-		submitButton.setForeground(new Color(0xe5e5ff));
-		submitButton.setHorizontalAlignment(SwingConstants.CENTER);
-		submitButton.setOpaque(true);
-		addActivityP.add(submitButton);
+		activitySubmit.setSize(100,30);
+		activitySubmit.setLocation(310,230);
+		activitySubmit.setBackground(new Color(0x0e2f44));
+		activitySubmit.setForeground(new Color(0xe5e5ff));
+		activitySubmit.setHorizontalAlignment(SwingConstants.CENTER);
+		activitySubmit.setOpaque(true);
+		customMouseListener = new CustomMouseListener("addActivitySubmit");
+		activitySubmit.addMouseListener(customMouseListener);
+		addActivityP.add(activitySubmit);
 	}
 	
 	public void setediActivityP(){
@@ -432,7 +450,7 @@ public class GUI extends JFrame{
 		backButton.setLocation(15, 3);
 		backButton.setHorizontalAlignment(SwingConstants.CENTER);
 		backButton.setOpaque(true);
-		backButton.addMouseListener(new CustomMouseListener(Activity, editActivityP));
+		backButton.addMouseListener(new CustomMouseListener("back",Activity, editActivityP));
 		editActivityP.add(backButton);
 		
 		JLabel addActivityHeader = new JLabel("Edit activity");
@@ -461,10 +479,10 @@ public class GUI extends JFrame{
 		backButton.setLocation(15, 3);
 		backButton.setHorizontalAlignment(SwingConstants.CENTER);
 		backButton.setOpaque(true);
-		backButton.addMouseListener(new CustomMouseListener(Activity, addprojectLeader));
+		backButton.addMouseListener(new CustomMouseListener("back", Activity, addprojectLeader));
 		addprojectLeader.add(backButton);
 		
-		JLabel addActivityHeader = new JLabel("Edit activity");
+		JLabel addActivityHeader = new JLabel("Add Leader");
 		addActivityHeader.setSize(600,30);
 		addActivityHeader.setLocation(0,0);
 		addActivityHeader.setBackground(new Color(0x0e2f44));
@@ -472,6 +490,19 @@ public class GUI extends JFrame{
 		addActivityHeader.setHorizontalAlignment(SwingConstants.CENTER);
 		addActivityHeader.setOpaque(true);
 		addprojectLeader.add(addActivityHeader);
+		
+		JLabel[] userLabels = new JLabel[users.size()];
+		for (int i = 0; i < users.size(); i++){
+			userLabels[i] = new JLabel(users.get(i).getName());
+			userLabels[i].setSize(140,35);
+			userLabels[i].setLocation(15, (i+1)*40);
+			userLabels[i].setBackground(new Color(0x8697a1));
+			userLabels[i].setHorizontalAlignment(SwingConstants.CENTER);
+			userLabels[i].setOpaque(true);
+			customMouseListener = new CustomMouseListener("editProjectLeader",Activity,addprojectLeader,users.get(i));
+			userLabels[i].addMouseListener(customMouseListener);
+			addprojectLeader.add(userLabels[i]);
+		}
 		
 	}
 	
@@ -482,26 +513,34 @@ public class GUI extends JFrame{
 		JPanel viewShow;
 		JPanel viewHide;
 		boolean eproject;
+		boolean eactivity;
+		String typeOfListener;
 		
-		CustomMouseListener(){
+		CustomMouseListener(String typeOfListener){
+			this.typeOfListener=typeOfListener;
 			eproject = true;
 		}
-		CustomMouseListener(JPanel viewShow, JPanel viewHide){
+		CustomMouseListener(String typeOfListener,JPanel viewShow, JPanel viewHide){
+			this.typeOfListener=typeOfListener;
 			this.viewShow = viewShow;
 			this.viewHide = viewHide;	
 		}
 		
-		CustomMouseListener(JPanel viewShow, JPanel viewHide, User user){
+		CustomMouseListener(String typeOfListener,JPanel viewShow, JPanel viewHide, User user){
+			this.typeOfListener=typeOfListener;
 			this.user = user;
 			this.viewShow = viewShow;
 			this.viewHide = viewHide;
 		}
-		CustomMouseListener(JPanel viewShow, JPanel viewHide, Project project){
+		CustomMouseListener(String typeOfListener,JPanel viewShow, JPanel viewHide, Project project){
+			this.typeOfListener=typeOfListener;
 			this.project = project;
 			this.viewShow = viewShow;
 			this.viewHide = viewHide;
 		}
-		CustomMouseListener(JPanel viewShow, JPanel viewHide, Activity activity){
+		
+		CustomMouseListener(String typeOfListener,JPanel viewShow, JPanel viewHide, Activity activity){
+			this.typeOfListener=typeOfListener;
 			this.activity = activity;
 			this.viewShow = viewShow;
 			this.viewHide = viewHide;
@@ -510,24 +549,34 @@ public class GUI extends JFrame{
 		
 	    public void mouseClicked(MouseEvent e) {
 
-	    	if (user != null){
+	    	if (typeOfListener.equals("back") ){
 	        	viewShow.setVisible(true);
 	    		viewHide.setVisible(false);
 	    	}
-	    	else if (project != null){
-	    		System.out.println(project.getName());
+	    	else if(typeOfListener.equals("showUsers")){
 	    		viewShow.setVisible(true);
 	    		viewHide.setVisible(false);
+	    		managementApp.logInUser(user.getUserID());
+	    		
 	    	}
-	    	else if (activity !=null){
-	    		System.out.println(activity.getName());
+	    	else if (typeOfListener.equals("showProjects")){
+	    		System.out.println(project.getName());
+	    		currentProject = project;
+	    		projectOverview.setText(managementApp.printProjectSummary(currentProject.getProjectID()));
+	    		//projectOverview.setText("Pik er kort");
 	    		viewShow.setVisible(true);
 	    		viewHide.setVisible(false);
 	    		
 	    	}
-	    	else if(eproject){
-	    		if (e.getSource() == projectSubmit) {
-				}
+	    	else if (typeOfListener.equals("ShowHideActivities")){
+	    		System.out.println(activity.getName());
+	    		currentActivity = activity;
+	    		viewShow.setVisible(true);
+	    		viewHide.setVisible(false);
+	    		
+	    	}
+	    	else if(typeOfListener.equals("addProjectSubmit")){
+	    		
 	    		Project newProject = new Project(projectProjectName.getText(), Integer.parseInt(projectProjectType.getText()));
 	    		
 	    		if(projectStartDate.getText().length() > 0){
@@ -535,7 +584,7 @@ public class GUI extends JFrame{
 	    		}
 	    	
 		    	if(projectEndDate.getText().length() > 0){
-		    		newProject.setStartDate(Integer.parseInt(projectEndDate.getText()));
+		    		newProject.setEndDate(Integer.parseInt(projectEndDate.getText()));
 		    	}
 		    	
 		    	if(projectProjectLeaderID.getText().length() > 0){
@@ -551,11 +600,47 @@ public class GUI extends JFrame{
 		    System.out.println(managementApp.projects.size());
 		    managementApp.saveProjects();
 	    	}
-	    	else {
+	    	else if(typeOfListener.equals("addActivitySubmit")){
+	    	 
+	    		Activity newActivity = new Activity(activityActivityName.getText(), currentProject.getProjectID());
+	    		
+	    		if(activityStartDate.getText().length() > 0){
+	    			newActivity.setStartDate(Integer.parseInt(activityStartDate.getText()));
+	    		}
+	    	
+		    	if(activityEndDate.getText().length() > 0){
+		    		newActivity.setEndDate(Integer.parseInt(activityEndDate.getText()));
+		    	}
+		    	
+		    	if(activityHoursBudgetted.getText().length() > 0){
+		    		newActivity.setHoursBudgeted(Integer.parseInt(activityHoursBudgetted.getText()));
+		    	}
+		    	
+		    	if(projectActive.getText().length() > 0){
+		    		newActivity.setActive(projectActive.isSelected());
+		    		
+		    	}
+		    System.out.println(managementApp.activities.size());
+		    managementApp.activities.add(newActivity);
+		    System.out.println(managementApp.activities.size());
+		    managementApp.saveActivities();
+	    	}
+	    	else if (typeOfListener.equals("editProjectLeader")){
+	    		managementApp.projects.get(currentProject.getProjectID()).setProjectLeaderId(user.getUserID());
+	    		//currentProject.setProjectLeaderId(user.getUserID());
 	    		viewShow.setVisible(true);
 	    		viewHide.setVisible(false);
+	    		managementApp.saveProjects();
+	    		System.out.println(currentProject.getProjectLeaderId());
 	    	}
-
+//	    	else {
+//	    		viewShow.setVisible(true);
+//	    		viewHide.setVisible(false);
+//	    	}
+	    	if(viewShow == Project && currentProject != null){
+	    		
+	    	}
+	    	
 	    	
 	    }
 

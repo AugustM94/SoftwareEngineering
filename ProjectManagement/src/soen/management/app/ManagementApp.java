@@ -24,6 +24,14 @@ public class ManagementApp {
 		loadProjects();
 		loadUsers();
 		loadActivities();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
+>>>>>>> origin/master
 		
 		logInUser(1);
 		System.out.println(activities.size());
@@ -35,13 +43,26 @@ public class ManagementApp {
 		System.out.println(printProjectSummary(0));
 		
 		try {
+<<<<<<< HEAD
+			System.out.println("loebenummer: " + identifierGenerator(10));
+=======
 			System.out.println("loebenummer: " + projectNumberGenerator(10));
+>>>>>>> origin/master
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+<<<<<<< HEAD
 
 		new GUI();
+=======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
+		
+>>>>>>> origin/master
 //		System.out.println(getAssignedActivitiesForUser(sessionUser).toString());
 //		registerWorkingHours(0, 5);
 //		registerWorkingHours(0, 10);
@@ -410,7 +431,10 @@ public class ManagementApp {
 	}
 
 	public static String printProjectSummary(int ID) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 		Project p = projects.get(ID);
 		String type;
 
