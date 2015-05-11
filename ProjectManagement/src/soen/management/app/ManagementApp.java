@@ -19,14 +19,21 @@ public class ManagementApp {
 	static FileReader fileReader = new FileReader();
 	private static boolean userLoggedIn = false;
 	static int sessionUser = 0;
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> origin/master
 
 	public static void main(String[] args) throws userNotLoggedInException {
 		loadProjects();
 		loadUsers();
 		loadActivities();
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 		
 		logInUser(1);
 		System.out.println(activities.size());
@@ -38,11 +45,20 @@ public class ManagementApp {
 		System.out.println(printProjectSummary(0));
 		
 		try {
+<<<<<<< HEAD
 			System.out.println("loebenummer: " + identifierGenerator(10));
+=======
+			System.out.println("loebenummer: " + projectNumberGenerator(10));
+>>>>>>> origin/master
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
 		
 //		System.out.println(getAssignedActivitiesForUser(sessionUser).toString());
 //		registerWorkingHours(0, 5);
@@ -61,8 +77,11 @@ public class ManagementApp {
 		// System.out.println("Amount of users: " + users.size());
 		// System.out.println(printProjectSummary(0));
 		// System.out.println("Amount of activities: "+ activities.size());
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> origin/master
 
 		//new GUI();
 		
@@ -111,12 +130,12 @@ public class ManagementApp {
 		return (int) (date.getTime()/1000);
 	}
 	
-	public static int identifierGenerator(int projectId) throws ParseException{
+	public static int projectNumberGenerator(int projectId) throws ParseException{
 		Date date = new Date();
 		long year = date.getTime();
 		SimpleDateFormat ft = new SimpleDateFormat("yy");
 		
-		return Integer.parseInt( ft.format(year));
+		return Integer.parseInt( ft.format(year) + ""+projectId);
 	}
 	
 	
