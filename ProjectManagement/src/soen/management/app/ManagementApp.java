@@ -19,16 +19,86 @@ public class ManagementApp {
 	static ArrayList<Project> projects = new ArrayList<Project>();
 	static ArrayList<User> users = new ArrayList<User>();
 	static ArrayList<Activity> activities = new ArrayList<Activity>();
+	static ArrayList<NonProjectActivity> nonProjectActivities = new ArrayList<NonProjectActivity>();
+	
+	private static ArrayList<NonProjectActivity> getNonProjectActivities() {
+		return nonProjectActivities;
+	}
+	private static void setNonProjectActivities(ArrayList<NonProjectActivity> nonProjectActivities) {
+		ManagementApp.nonProjectActivities = nonProjectActivities;
+	}
+
 	static FileReader fileReader = new FileReader();
 	private static boolean userLoggedIn = false;
 	static int sessionUser = 0;
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
 	public static void main(String[] args) throws userNotLoggedInException {
 		loadProjects();
 		loadUsers();
 		loadActivities();
+<<<<<<< HEAD
+
 		
+		logInUser(1);
+		System.out.println(activities.size());
+		System.out.println(activities.get(0).getActivityID());
+//		assingUserToActivity(0, 1);
+		System.out.println(activities.get(0).getAssignedUsers());
+		registerWorkingHours(0, 5);
+		System.out.println(activities.get(0).getHoursSpendPerUser());
+		System.out.println(printProjectSummary(0));
+		
+		try {
+			System.out.println("loebenummer: " + projectNumberGenerator(10));
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		
+//		System.out.println(getAssignedActivitiesForUser(sessionUser).toString());
+//		registerWorkingHours(0, 5);
+//		registerWorkingHours(0, 10);
+//		System.out.println(activities.get(0).getHoursSpendPerUser().get(1));
+	//	System.out.println(activities.get(0).getHoursSpendPerUser().toString());
+
+		// System.out.println(activities.get(0).getName());
+		// //User new_user = new User("Berit");
+		// //users.add(new_user);
+		//
+		// //adds a new project
+		// //Project new_project = new Project("test",1);
+		// //projects.add(new_project);
+		// System.out.println("Amount of projects: " + projects.size());
+		// System.out.println("Amount of users: " + users.size());
+		// System.out.println(printProjectSummary(0));
+		// System.out.println("Amount of activities: "+ activities.size());
+
+
 		new GUI();
+		
+		/*
+		try {
+			System.out.println(dateToUnix("January 2, 2010"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+*/
+		// saveUsers();
+		// saveProjects();
+
+=======
+		
+		NonProjectActivity newNonProjectActivity = new  NonProjectActivity("test npa");
+		nonProjectActivities.add(newNonProjectActivity);
+		System.out.println(nonProjectActivities.get(0).getName());
+		new GUI();
+>>>>>>> origin/master
 	}
 	// AM
 	public static void logInUser(int userID) {
@@ -249,6 +319,77 @@ public class ManagementApp {
 			activities.add(activityElement);
 		}
 	}
+	
+	// MM
+	public static void loadNonProjectActivities() throws NumberFormatException {
+		String jsonString = fileReader.getFileData("nonProjectActivities");
+		JSONArray jsonArray = new JSONArray(jsonString);
+		
+		for (int i = 0; i < jsonArray.length(); i++) {
+			int nonProjectActivityID = 0;
+			String name = "";
+			int startDate = 0;
+			int endDate = 0;
+			ArrayList<Integer> assignedUsers = new ArrayList<Integer>();
+			ArrayList<Integer> hoursSpendPerUser = new ArrayList<Integer>();
+			int timeStamp = 0;
+			boolean active = false;
+
+			JSONArray JSONAssignedUsers = new JSONArray();
+			JSONArray JSONHoursSpendPerUser = new JSONArray();
+
+			JSONObject activity = jsonArray.getJSONObject(i);
+
+			try {
+				nonProjectActivityID = activity.getInt("activityID");
+				startDate = activity.getInt("projectID");
+				endDate = activity.getInt("endDate");
+				timeStamp = activity.getInt("timeStamp");
+			} catch (NumberFormatException e) {
+				System.out.println("not a number");
+			}
+
+			try {
+				name = activity.getString("name");
+			} catch (NumberFormatException e) {
+				System.out.println("not a valid string");
+			}
+
+			try {
+				JSONAssignedUsers = activity.getJSONArray("assignedUsers");
+			} catch (NumberFormatException e) {
+				System.out.println("not a valid array");
+			}
+
+			try {
+				active = activity.getBoolean("active");
+			} catch (NumberFormatException e) {
+				System.out.println("not a valid boolean");
+			}
+
+
+			for (int j = 0; j < JSONAssignedUsers.length(); j++) {
+				int assignedUser = 0;
+				try {
+					assignedUser = JSONAssignedUsers.getInt(j);
+				} catch (NumberFormatException e) {
+					System.out.println("not a number");
+				}
+				assignedUsers.add(assignedUser);
+			}
+
+			NonProjectActivity activityElement = new NonProjectActivity(name);
+			activityElement.setName(name);
+			activityElement.setEndDate(endDate);
+			activityElement.setStartDate(startDate);
+			activityElement.setNonProjectActivityID(nonProjectActivityID);
+			activityElement.setTimeStamp(timeStamp);
+			activityElement.setAssignedUsers(assignedUsers);
+			activityElement.setActive(active);
+
+			nonProjectActivities.add(activityElement);
+		}
+	}
 	//MM
 	public static void loadUsers() throws NumberFormatException {
 		String jsonString = fileReader.getFileData("users");
@@ -366,6 +507,14 @@ public class ManagementApp {
 
 		fileReader.saveFileData(jsArray.toString(), "users");
 	}
+	
+	public static void saveNonProjectActivities() {
+		JSONArray jsArray = new JSONArray(nonProjectActivities.toArray());
+
+		fileReader.saveFileData(jsArray.toString(), "nonProjectActivities");
+	}
+	
+	
 
 //	public String printProjectSummary(int ID) {
 //		System.out.println(projects.size());
