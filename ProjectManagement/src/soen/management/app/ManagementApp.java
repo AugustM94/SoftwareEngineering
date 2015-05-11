@@ -17,21 +17,11 @@ public class ManagementApp {
 	static FileReader fileReader = new FileReader();
 	private static boolean userLoggedIn = false;
 	static int sessionUser = 0;
-	static int currentProject = 0;
-
-	public static int getCurrentProject() {
-		return currentProject;
-	}
-
-	public static void setCurrentProject(int currentProject) {
-		ManagementApp.currentProject = currentProject;
-	}
 
 	public static void main(String[] args) throws userNotLoggedInException {
 		loadProjects();
 		loadUsers();
 		loadActivities();
-
 		
 		logInUser(1);
 		System.out.println(activities.size());
@@ -43,7 +33,7 @@ public class ManagementApp {
 		System.out.println(printProjectSummary(0));
 		
 		try {
-			System.out.println("loebenummer: " + identifierGenerator(10));
+			System.out.println("loebenummer: " + projectNumberGenerator(10));
 		} catch (ParseException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -66,14 +56,6 @@ public class ManagementApp {
 		// System.out.println("Amount of users: " + users.size());
 		// System.out.println(printProjectSummary(0));
 		// System.out.println("Amount of activities: "+ activities.size());
-<<<<<<< Updated upstream
-=======
-
-	//	new GUI();
-
-		//new GUI();
-
->>>>>>> Stashed changes
 
 		new GUI();
 		
@@ -118,12 +100,12 @@ public class ManagementApp {
 		return (int) (date.getTime()/1000);
 	}
 	
-	public static int identifierGenerator(int projectId) throws ParseException{
+	public static int projectNumberGenerator(int projectId) throws ParseException{
 		Date date = new Date();
 		long year = date.getTime();
 		SimpleDateFormat ft = new SimpleDateFormat("yy");
 		
-		return Integer.parseInt( ft.format(year));
+		return Integer.parseInt( ft.format(year) + ""+projectId);
 	}
 	
 	

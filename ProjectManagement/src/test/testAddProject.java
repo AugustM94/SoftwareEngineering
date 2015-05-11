@@ -84,7 +84,7 @@ public void testAddProjectLeaderToProject() throws userNotLoggedInException{
 	Project project = new Project(name,0); 
 	managementApp.logInUser(user.getUserID());
 	managementApp.saveProject(project);
-	managementApp.setSessionUser(user.getUserID());
+	managementApp.logInUser(user.getUserID());
 	managementApp.addProjectLeader(projectLeader.getUserID(),project.getProjectID());
 	assertEquals("Per", users.get(project.getProjectLeaderId()).getName());	
 }
