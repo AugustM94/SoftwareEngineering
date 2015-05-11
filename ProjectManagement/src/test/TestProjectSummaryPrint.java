@@ -82,7 +82,6 @@ public class TestProjectSummaryPrint {
 
 		// Creates the summary string
 		String s = managementApp.printProjectSummary(0);
-		System.out.println(s);
 
 		// Test
 		// a) Tests if projectleader is listed in the string.
