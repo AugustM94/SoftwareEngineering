@@ -1,3 +1,5 @@
+// August Moebius (s144461) = AM, Niki Jensen (s144216) = NJ, Martin Meincke (s123883) = MM
+
 package soen.management.app;
 
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class Activity {
 	}
 	
 	
-	
+	//MM
 	// Getters and setters	
 	public int getAssignedUserIndex(int target){
 			int index = -1;
@@ -40,7 +42,7 @@ public class Activity {
 		
 		return index;
 	}
-	
+	//AM
 	public int getTotalHoursSpend(){
 		int counter = 0;
 		for(int i = 0; i < hoursSpendPerUser.size(); i++){
@@ -134,7 +136,7 @@ public class Activity {
 	public void setHoursBudgeted(int hoursBudgeted) {
 		this.hoursBudgeted = hoursBudgeted;
 	}
-	
+	//NH
 	public void regeisterHours(int hours){
 		int index = getAssignedUserIndex(managementApp.getSessionUser());
 		
