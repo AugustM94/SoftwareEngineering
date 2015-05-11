@@ -161,7 +161,7 @@ public class GUI extends JFrame{
 		NPALabel.setBackground(new Color(0x0e2f44));
 		NPALabel.setForeground(new Color(0xe5e5ff));
 		NPALabel.setHorizontalAlignment(SwingConstants.CENTER);
-		NPALabel.setOpaque(true);
+		NPALabel.setOpaque(true); 
 		NPALabel.addMouseListener(new CustomMouseListener("back",Project, chooseNPA));
 		chooseNPA.add(NPALabel);
 		
