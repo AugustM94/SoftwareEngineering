@@ -20,7 +20,6 @@ public class GUI extends JFrame{
 	
 	private ManagementApp managementApp = new ManagementApp();
 	JPanel chooseUser = new JPanel();
-	JPanel assignProject = new JPanel();
 	JPanel Project = new JPanel();
 	JPanel Activity = new JPanel();
 	JPanel addActivityP = new JPanel();
@@ -47,6 +46,14 @@ public class GUI extends JFrame{
 	JCheckBox activityActive = new JCheckBox("");
 	JLabel activitySubmit = new JLabel("Submit");
 	
+	JTextField editName = new JTextField(20);
+	JTextField startDate = new JTextField(20);
+	JTextField endDate = new JTextField(20);
+	JTextField assignedUsers = new JTextField(20);
+	JTextField hoursBudgeted = new JTextField(20);
+	JCheckBox activeActive = new JCheckBox("");
+	JLabel editActivitySubmit = new JLabel("Submit");
+	
 	JTextField activityAddHours = new JTextField(20);
 	JLabel addWorkingHoursSubmit = new JLabel("Submit");
 	
@@ -63,7 +70,6 @@ public class GUI extends JFrame{
 	    setLayout(null);
 	    Container con = this.getContentPane(); 
 	    setchooseUser();
-	    setassignProject();
 	    setProject();
 	    setActivity();
 	    setAddActivityP();
@@ -74,7 +80,6 @@ public class GUI extends JFrame{
 	    setChooseNPA();
 
 	    con.add(chooseUser);
-	    con.add(assignProject);
 	    con.add(Project);
 	    con.add(Activity);
 	    con.add(addActivityP);
@@ -118,16 +123,7 @@ public class GUI extends JFrame{
 			chooseUser.add(userLabels[i]);
 		}
 	}
-	public void setassignProject() {
-		JLabel userHeader = new JLabel("Assign Project or Non-Project-Activity");
-		userHeader.setSize(600,30);
-		userHeader.setLocation(0,0);
-		userHeader.setBackground(new Color(0x0e2f44));
-		userHeader.setForeground(new Color(0xe5e5ff));
-		userHeader.setHorizontalAlignment(SwingConstants.CENTER);
-		userHeader.setOpaque(true);
-		chooseUser.add(userHeader);
-	}
+	
 	
 	public void setChooseNPA(){
 		chooseNPA.setBackground(new Color(0xe5e5e5));
@@ -461,7 +457,7 @@ public class GUI extends JFrame{
 		activeLabel.setBackground(new Color(0xe5e5e5));
 		activeLabel.setOpaque(true);
 		addActivityP.add(activeLabel);
-
+		
 		activityActive.setSize(150,30);
 		activityActive.setLocation(150,230);
 		activityActive.setOpaque(true);
@@ -536,6 +532,7 @@ public class GUI extends JFrame{
 	}
 	
 	public void setEditActivity(){
+		
 		editActivityP.setBackground(new Color(0xe5e5e5));
 		editActivityP.setSize(600, 400);
 		editActivityP.setLocation(0, 0);
@@ -560,6 +557,89 @@ public class GUI extends JFrame{
 		editActivityHeader.setHorizontalAlignment(SwingConstants.CENTER);
 		editActivityHeader.setOpaque(true);
 		editActivityP.add(editActivityHeader);
+		
+		
+		JLabel editNameLabel = new JLabel("Edit Name:");
+		editNameLabel.setSize(100,30);
+		editNameLabel.setLocation(30,50);
+		editNameLabel.setBackground(new Color(0xe5e5e5));
+		editNameLabel.setOpaque(true);
+		editActivityP.add(editNameLabel);
+		
+		editName.setSize(150,30);
+		editName.setLocation(140,50);
+		editName.setOpaque(true);
+		editActivityP.add(editName);
+		
+		JLabel startDateLabel = new JLabel("Start Date:");
+		startDateLabel.setSize(100,30);
+		startDateLabel.setLocation(30,90);
+		startDateLabel.setBackground(new Color(0xe5e5e5));
+		startDateLabel.setOpaque(true);
+		editActivityP.add(startDateLabel);
+		
+		startDate.setSize(150,30);
+		startDate.setLocation(140,90);
+		startDate.setOpaque(true);
+		editActivityP.add(startDate);
+		
+		JLabel endDateLabel = new JLabel("End Date:");
+		endDateLabel.setSize(100,30);
+		endDateLabel.setLocation(30,130);
+		endDateLabel.setBackground(new Color(0xe5e5e5));
+		endDateLabel.setOpaque(true);
+		editActivityP.add(endDateLabel);
+		
+		endDate.setSize(150,30);
+		endDate.setLocation(140,130);
+		endDate.setOpaque(true);
+		editActivityP.add(endDate);
+		
+		JLabel assignedUserLabel = new JLabel("Assigned Users:");
+		assignedUserLabel.setSize(100,30);
+		assignedUserLabel.setLocation(30,170);
+		assignedUserLabel.setBackground(new Color(0xe5e5e5));
+		assignedUserLabel.setOpaque(true);
+		editActivityP.add(assignedUserLabel);
+		
+		assignedUsers.setSize(150,30);
+		assignedUsers.setLocation(140,170);
+		assignedUsers.setOpaque(true);
+		editActivityP.add(assignedUsers);
+		
+		JLabel hoursBudgetedLabel = new JLabel("Hours Budgeted:");
+		hoursBudgetedLabel.setSize(100,30);
+		hoursBudgetedLabel.setLocation(30,210);
+		hoursBudgetedLabel.setBackground(new Color(0xe5e5e5));
+		hoursBudgetedLabel.setOpaque(true);
+		editActivityP.add(hoursBudgetedLabel);
+		
+		hoursBudgeted.setSize(150,30);
+		hoursBudgeted.setLocation(140,210);
+		hoursBudgeted.setOpaque(true);
+		editActivityP.add(hoursBudgeted);
+		
+		JLabel activeLabel = new JLabel("Active:");
+		activeLabel.setSize(100,30);
+		activeLabel.setLocation(30,250);
+		activeLabel.setBackground(new Color(0xe5e5e5));
+		activeLabel.setOpaque(true);
+		editActivityP.add(activeLabel);
+		
+		activeActive.setSize(150,30);
+		activeActive.setLocation(140,250);
+		activeActive.setOpaque(true);
+		editActivityP.add(activeActive);
+		
+		editActivitySubmit.setSize(100,30);
+		editActivitySubmit.setLocation(300,250);
+		editActivitySubmit.setBackground(new Color(0x0e2f44));
+		editActivitySubmit.setForeground(new Color(0xe5e5ff));
+		editActivitySubmit.setHorizontalAlignment(SwingConstants.CENTER);
+		editActivitySubmit.setOpaque(true);
+		customMouseListener = new CustomMouseListener("editActivity",Activity,editActivityP);
+		editActivitySubmit.addMouseListener(customMouseListener);
+		editActivityP.add(editActivitySubmit);
 	}
 	
 	public void setAddWorkingHours(){
@@ -763,6 +843,7 @@ public class GUI extends JFrame{
 		    		newActivity.setActive(projectActive.isSelected());
 		    		
 		    	}
+		    
 		    	
 			    managementApp.activities.add(newActivity);
 			    managementApp.saveActivities();
@@ -776,6 +857,31 @@ public class GUI extends JFrame{
 	    		viewHide.setVisible(false);
 	    		managementApp.saveProjects();
 	    		System.out.println(currentProject.getProjectLeaderId());
+	    	}
+	    	else if (typeOfListener.equals("editActivity")){
+	    			Activity editActivity = managementApp.getActivityArray().get(currentActivity.getActivityID());
+	    		
+	    		if (editName.getText().length() > 0) {
+	    			editActivity.setName(editName.getText());
+	    		}
+	    		if (startDate.getText().length() > 0) {
+		    		editActivity.setStartDate(Integer.parseInt(startDate.getText()));
+	    		}
+	    		if (endDate.getText().length() > 0) {
+		    		editActivity.setEndDate(Integer.parseInt(endDate.getText()));
+	    		}
+	    		if (assignedUsers.getText().length() > 0) {
+	    			editActivity.getAssignedUsers().add(Integer.parseInt(assignedUsers.getText()));
+	    		}
+	    		if (hoursBudgeted.getText().length() > 0) {
+	    			editActivity.setHoursBudgeted(Integer.parseInt(hoursBudgeted.getText()));
+	    		}
+	    		if (activeActive.getText().length() > 0) {
+	    			editActivity.setActive(projectActive.isSelected());
+	    		}
+	    		viewShow.setVisible(true);
+	    		viewHide.setVisible(false);
+	    		managementApp.saveActivities();
 	    	}
 	    	
 	    	else if (typeOfListener.equals("addWorkingHoursSubmit")){
